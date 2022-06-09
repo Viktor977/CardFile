@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CardFile.DAL.Interfaces
 {
@@ -11,5 +12,6 @@ namespace CardFile.DAL.Interfaces
         ITextMaterialRepository TextMaterialRepository { get; }
         IReactionRepository ReactionRepository { get; }
         IHistoryRepository HistoryRepository { get; }
+        Task SaveAsync();
     }
 }

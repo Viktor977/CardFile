@@ -3,6 +3,7 @@ using CardFile.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CardFile.DAL.Data
 {
@@ -19,14 +20,42 @@ namespace CardFile.DAL.Data
             {
                 return new UserRepository(_context);
             }
+        }
+
+        public IUserProfileRepository UserProfileRepository
+        {
+            get
+            {
+                return new UserProfileRepository(_context);
             }
+        }
 
-        public IUserProfileRepository UserProfileRepository => throw new NotImplementedException();
+        public ITextMaterialRepository TextMaterialRepository
+        {
+            get
+            {
+                return new TextMaterialRepository(_context);
+            }
+        }
+        public IReactionRepository ReactionRepository
+        {
+            get
+            {
+                return new ReactionRepository(_context);
+            }
+        }
 
-        public ITextMaterialRepository TextMaterialRepository => throw new NotImplementedException();
+        public IHistoryRepository HistoryRepository
+        {
+            get
+            {
+                return new HistoryRepository(_context);
+            }
+        }
 
-        public IReactionRepository ReactionRepository => throw new NotImplementedException();
-
-        public IHistoryRepository HistoryRepository => throw new NotImplementedException();
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }
