@@ -1,4 +1,5 @@
 ﻿using CardFile.DAL.Enums;
+using System.Collections.Generic;
 
 namespace CardFile.DAL.Entities
 {
@@ -9,6 +10,7 @@ namespace CardFile.DAL.Entities
         public Roles Role { get; set; }
       
         public UserProfile Profile { get; set; }
+        public virtual ICollection<History> Materials { get; set; }
 
     }
 }

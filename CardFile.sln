@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardFile.DAL", "CardFile.DAL\CardFile.DAL.csproj", "{CEC663C4-6ABC-40AF-9D8D-B3CE8627FB76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.TESTS", "CardFile.TESTS\CardFile.TESTS.csproj", "{7E4CC464-0F58-4D32-A3E9-000B7240DC34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardFile.TESTS", "CardFile.TESTS\CardFile.TESTS.csproj", "{7E4CC464-0F58-4D32-A3E9-000B7240DC34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
