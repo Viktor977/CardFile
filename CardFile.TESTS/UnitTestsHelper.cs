@@ -33,7 +33,31 @@ namespace CardFile.TESTS
             context.Users.AddRange(userTwo);
             context.Users.AddRange(userThree);
 
-            
+            var historyOne = new History { Id = 1, ReaderId = 1, TextId = 1, LastAction = new DateTime(2022, 02, 20) };
+            var historyTwo = new History { Id = 2, ReaderId = 2, TextId = 2, LastAction = new DateTime(2022, 02, 21) };
+            context.Histories.AddRange(historyOne);
+            context.Histories.AddRange(historyTwo);
+
+            var reactionOne = new Reaction { Id = 1, Assessment = Assessments.Like, UserId = 1, Comment = "amazing!!!" };
+            var reactionTwo = new Reaction { Id = 2, Assessment = Assessments.Like, UserId = 2, Comment = "cool!" };
+            var reactionThree = new Reaction { Id = 3, Assessment = Assessments.Dislike, UserId = 3, Comment = " " };
+            context.Reactions.AddRange(reactionOne);
+            context.Reactions.AddRange(reactionTwo);
+            context.Reactions.AddRange(reactionThree);
+
+            var textOne = new TextMaterial { Id = 1, Allows = Allows.Allowed, DatePublish = new DateTime(2020, 12, 21), Author = "Doe A." };
+            var textTwo = new TextMaterial { Id = 2, Allows = Allows.Accepted, DatePublish = new DateTime(2020, 12, 22), Author = "Doe B." };
+            var textThree = new TextMaterial { Id = 3, Allows = Allows.Regected, DatePublish = new DateTime(2020, 12, 23), Author = "Doe C." };
+            context.Materials.AddRange(textOne);
+            context.Materials.AddRange(textTwo);
+            context.Materials.AddRange(textThree);
+
+            var profileOne = new UserProfile { Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1" };
+            var profileTwo = new UserProfile { Id = 2, UserId = 2, Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" };
+            var profileThree = new UserProfile { Id = 3, UserId = 3, Email = "userThree@gmail", Login = "User3", Password = "@usEr!3" };
+            context.UserProfiles.AddRange(profileOne);
+            context.UserProfiles.AddRange(profileTwo);
+            context.UserProfiles.AddRange(profileThree);
 
             context.SaveChanges();
         }

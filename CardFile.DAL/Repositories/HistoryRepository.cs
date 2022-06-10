@@ -1,6 +1,7 @@
 ﻿using CardFile.DAL.Data;
 using CardFile.DAL.Entities;
 using CardFile.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,34 +17,36 @@ namespace CardFile.DAL.Repositories
         {
             _context = context;
         }
-        public Task AddAsync(History entity)
+        public async Task AddAsync(History entity)
         {
-            throw new NotImplementedException();
+            await _context.Histories.AddAsync(entity);
+
         }
 
         public void Delete(History entity)
         {
-            throw new NotImplementedException();
+            _context.Histories.Remove(entity);
         }
 
-        public Task DeleteByIdAsync(int id)
+        public async Task DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+          var history=  await _context.Histories.FindAsync(id);
+            _context.Histories.Remove(history);
         }
 
-        public Task<IEnumerable<History>> GetAllAsync()
+        public async Task<IEnumerable<History>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Histories.ToListAsync();
         }
 
-        public Task<History> GetByIdAsync(int id)
+        public async  Task<History> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Histories.FindAsync(id);
         }
 
         public void Update(History entity)
         {
-            throw new NotImplementedException();
+            _context.Histories.Update(entity);
         }
     }
 }

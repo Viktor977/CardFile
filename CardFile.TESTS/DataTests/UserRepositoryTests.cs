@@ -19,11 +19,11 @@ namespace CardFile.TESTS.DataTests
         {
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
-            var customerRepository = new UserRepository(context);
-            var customer = new User { Id = 4 };
+            var userRepository = new UserRepository(context);
+            var user = new User { Id = 4 };
 
             // Act
-            await customerRepository.AddAsync(customer);
+            await userRepository.AddAsync(user);
             await context.SaveChangesAsync();
 
             //Assert
@@ -34,13 +34,13 @@ namespace CardFile.TESTS.DataTests
         {
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
-            var customerRepository = new UserRepository(context);
+            var userRepository = new UserRepository(context);
 
             //Act
-            var customers = await customerRepository.GetAllAsync();
+            var user = await userRepository.GetAllAsync();
 
             //Assert
-            Assert.That(customers, Is.EqualTo(ExpectedUsers).Using(new UserEqualityComparer()), message: "GetAllAsync method works incorrect");
+            Assert.That(user, Is.EqualTo(ExpectedUsers).Using(new UserEqualityComparer()), message: "GetAllAsync method works incorrect");
         }
 
         [TestCase(1)]
@@ -49,14 +49,14 @@ namespace CardFile.TESTS.DataTests
         {
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
-            var customerRepository = new UserRepository(context);
+            var userRepository = new UserRepository(context);
 
             //Act
-            var customer = await customerRepository.GetByIdAsync(id);
+            var user = await userRepository.GetByIdAsync(id);
             var expected = ExpectedUsers.FirstOrDefault(x => x.Id == id);
 
             //Assert
-            Assert.That(customer, Is.EqualTo(expected).Using(new UserEqualityComparer()), message: "GetByIdAsync method works incorrect");
+            Assert.That(user, Is.EqualTo(expected).Using(new UserEqualityComparer()), message: "GetByIdAsync method works incorrect");
         }
 
         [Test]
@@ -64,10 +64,10 @@ namespace CardFile.TESTS.DataTests
         {
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
-            var customerRepository = new UserRepository(context);
+            var userRepository = new UserRepository(context);
 
             //Act
-            await customerRepository.DeleteByIdAsync(1);
+            await userRepository.DeleteByIdAsync(1);
             await context.SaveChangesAsync();
 
             //Assert
