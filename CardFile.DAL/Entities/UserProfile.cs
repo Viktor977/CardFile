@@ -1,5 +1,4 @@
-﻿
-namespace CardFile.DAL.Entities
+﻿namespace CardFile.DAL.Entities
 {
     public class UserProfile : BaseEntity
     {

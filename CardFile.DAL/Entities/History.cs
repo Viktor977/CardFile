@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardFile.DAL.Entities
 {
-   public  class History : BaseEntity
+    public class History : BaseEntity
     {
         public int TextId { get; set; }
         public int ReaderId { get; set; }

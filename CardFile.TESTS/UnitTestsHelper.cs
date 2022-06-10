@@ -1,4 +1,6 @@
-﻿using CardFile.DAL.Data;
+﻿using AutoMapper;
+using CardFile.BAL.Access;
+using CardFile.DAL.Data;
 using CardFile.DAL.Entities;
 using CardFile.DAL.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +25,12 @@ namespace CardFile.TESTS
 
             return options;
         }
-        
+        public static IMapper CreateMapperProfile()
+        {
+            var myProfile = new AutoMapperProfile();       
+            return myProfile.GetMapper();
+        }
+
         public static void SeedData(CardFileDBContext context)
         {
             var userOne = new User { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered };

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardFile.DAL", "CardFile.DA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardFile.TESTS", "CardFile.TESTS\CardFile.TESTS.csproj", "{7E4CC464-0F58-4D32-A3E9-000B7240DC34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.BAL", "CardFile.BAL\CardFile.BAL.csproj", "{334F8431-60BC-4DA2-9939-20569415B0E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7E4CC464-0F58-4D32-A3E9-000B7240DC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E4CC464-0F58-4D32-A3E9-000B7240DC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E4CC464-0F58-4D32-A3E9-000B7240DC34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334F8431-60BC-4DA2-9939-20569415B0E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334F8431-60BC-4DA2-9939-20569415B0E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334F8431-60BC-4DA2-9939-20569415B0E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334F8431-60BC-4DA2-9939-20569415B0E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

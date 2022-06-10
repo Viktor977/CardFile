@@ -1,9 +1,6 @@
 ﻿using CardFile.DAL.Interfaces;
 using CardFile.DAL.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardFile.DAL.Data
 {

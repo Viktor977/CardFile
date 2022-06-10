@@ -1,9 +1,6 @@
 ﻿using CardFile.DAL.Entities;
 using CardFile.DAL.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardFile.DAL.Data
 {
@@ -14,7 +11,7 @@ namespace CardFile.DAL.Data
         public DbSet<History> Histories { get; set; }
         public DbSet<TextMaterial> Materials { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
-       public CardFileDBContext(DbContextOptions<CardFileDBContext> options) : base(options) { }
+        public CardFileDBContext(DbContextOptions<CardFileDBContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +21,5 @@ namespace CardFile.DAL.Data
             modelBuilder.ApplyConfiguration(new TextMaterialConfiguration());
             modelBuilder.ApplyConfiguration(new ReactionConfiguration());
         }
-      
     }
 }
