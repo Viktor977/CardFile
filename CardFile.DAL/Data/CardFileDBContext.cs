@@ -13,12 +13,6 @@ namespace CardFile.DAL.Data
         public DbSet<Reaction> Reactions { get; set; }
         public CardFileDBContext(DbContextOptions<CardFileDBContext> options) : base(options) { }
 
-        //public CardFileDBContext() { }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //     optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=CardFileDB;User ID=user1;Password=AZSXDCFVGBHNJMK<L>:?;");
-        //   // optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=TradeMarket;Trusted_Connection=True;");
-        //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
@@ -27,5 +21,6 @@ namespace CardFile.DAL.Data
             modelBuilder.ApplyConfiguration(new TextMaterialConfiguration());
             modelBuilder.ApplyConfiguration(new ReactionConfiguration());
         }
+
     }
 }

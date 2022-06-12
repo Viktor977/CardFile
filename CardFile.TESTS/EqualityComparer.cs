@@ -14,7 +14,7 @@ namespace CardFile.TESTS
             {
                 return true;
             }
-            if(x==null || y == null)
+            if(x == null || y == null)
             {
                 return false;
             }
@@ -35,11 +35,11 @@ namespace CardFile.TESTS
     {
         public bool Equals([AllowNull] UserProfile x, [AllowNull] UserProfile y)
         {
-            if(x==null && y == null)
+            if(x == null && y == null)
             {
                 return true;
             }
-            if(x==null || y == null)
+            if(x == null || y == null)
             {
                 return false;
             }
@@ -50,6 +50,31 @@ namespace CardFile.TESTS
         }
 
         public int GetHashCode([DisallowNull] UserProfile obj)
+        {
+            return obj.GetHashCode();
+        }
+    }
+
+    internal class HistoryEqualityCompare : IEqualityComparer<History>
+    {
+        public bool Equals([AllowNull] History x, [AllowNull] History y)
+        {
+            if (x is null && y is null)
+            {
+                return true;
+            }
+            if (x is null || y is null)
+            {
+                return false;
+            }
+
+            return x.Id == y.Id
+                           && x.LastAction == y.LastAction
+                           && x.ReaderId == y.ReaderId
+                           && x.TextId == y.TextId;
+        }
+
+        public int GetHashCode([DisallowNull] History obj)
         {
             return obj.GetHashCode();
         }

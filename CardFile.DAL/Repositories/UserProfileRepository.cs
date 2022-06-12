@@ -42,9 +42,10 @@ namespace CardFile.DAL.Repositories
             return await _context.UserProfiles.FindAsync(id);
         }
 
-        public void Update(UserProfile entity)
+        public  void Update(UserProfile entity)
         {
             _context.UserProfiles.Update(entity);
+           
         }
     }
 }

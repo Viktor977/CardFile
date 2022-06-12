@@ -42,10 +42,18 @@ namespace CardFile.DAL.Repositories
         {
             return await _context.Users.FindAsync(id);
         }
+       public async Task<User>GetByIdWithDetailsAsync(int id)
+        {
+            var user = await _context.Users
+                .Include(t => t.Profile)
+                .SingleAsync(t => t.Id == id);
+            return user;
+        }
 
-        public void Update(User entity)
+        public  void Update(User entity)
         {
             _context.Users.Update(entity);
+           
         }
     }
 }

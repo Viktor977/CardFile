@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CardFile.BAL.Interfaces
 {
-    interface IService
+   public interface IService
     {
-        //TODO;
+       public IUserService UserService { get; }
     }
 }

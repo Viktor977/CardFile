@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
 using CardFile.BAL.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardFile.BAL.Access
 {
     public class AutoMapperProfile : Profile
-    {
-        public IMapper Mapper { get; set; }
-        public AutoMapperProfile() { }
+    {    
         public IMapper GetMapper()
         {
             var configuration = new MapperConfiguration(config =>
@@ -21,7 +16,8 @@ namespace CardFile.BAL.Access
                   config.AddProfile<ReactionMapper>();
               });
 
-            return configuration.CreateMapper();
+            var profiles= configuration.CreateMapper();
+            return profiles;
         }
     }
 }

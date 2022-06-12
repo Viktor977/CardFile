@@ -18,15 +18,44 @@ namespace CardFile.TESTS.DataTests
         {
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
-            var customerRepository = new HistoryRepository(context);
+            var historyRepository = new HistoryRepository(context);
             var customer = new History { Id = 4 };
 
             // Act
-            await customerRepository.AddAsync(customer);
+            await historyRepository.AddAsync(customer);
             await context.SaveChangesAsync();
 
             //Assert
             Assert.That(context.Histories.Count(), Is.EqualTo(3), message: "AddAsync method works incorrect");
+        }
+        [Test]
+        public async Task HistoryRepository_Update_UpdatesEntity()
+        {
+            //Arrange
+            using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
+
+            var historyRepository = new HistoryRepository(context);
+            var customer = new History
+            {
+                Id = 1,
+                LastAction=new DateTime(2020,10,10),
+                ReaderId=1,
+                TextId=9
+               
+            };
+
+            //Act
+            historyRepository.Update(customer);
+            await context.SaveChangesAsync();
+
+            //Assert
+            Assert.That(customer, Is.EqualTo(new History
+            {
+                Id = 1,
+                LastAction = new DateTime(2020, 10, 10),
+                ReaderId = 1,
+                TextId = 9
+            }).Using(new HistoryEqualityCompare()), message: "Update method works incorrect");
         }
     }
 }

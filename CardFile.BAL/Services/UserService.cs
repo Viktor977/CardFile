@@ -26,9 +26,9 @@ namespace CardFile.BAL.Services
             await _uow.UserRepositiory.AddAsync(user);
         }
 
-        public Task DeleteAsync(int modelId)
+        public async Task DeleteAsync(int modelId)
         {
-            throw new NotImplementedException();
+           await _uow.UserRepositiory.DeleteByIdAsync(modelId);
         }
 
         public async Task<IEnumerable<UserDto>> GetAllAsync()
@@ -37,14 +37,26 @@ namespace CardFile.BAL.Services
             return _mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(users);
         }
 
-        public Task<UserDto> GetByIdAsync(int id)
+        public async Task<UserDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _uow.UserRepositiory.GetByIdAsync(id);
+            return _mapper.Map<User, UserDto>(user);
+        }
+        public async Task<UserDto>GetByIdWithDetailsAsync(int id)
+        {
+            var userProfile = await _uow.UserRepositiory.GetByIdWithDetailsAsync(id);
+            var profileDto = _mapper.Map<UserProfile, UserProfileDto>(userProfile.Profile);
+            var res = _mapper.Map<User, UserDto>(userProfile);
+            res.UserProfileDto = profileDto;
+            return res;
+
         }
 
-        public Task UpdateAsync(UserDto model)
+        public async Task UpdateAsync(UserDto model)
         {
-            throw new NotImplementedException();
+            var user = _mapper.Map<UserDto, User>(model);
+            _uow.UserRepositiory.Update(user);
+            await _uow.SaveAsync();
         }
     }
 }
