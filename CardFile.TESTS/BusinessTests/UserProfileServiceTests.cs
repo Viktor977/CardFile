@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CardFile.TESTS.BusinessTests
-{
+{   
     public class UserProfileServiceTests
     {
         [Test] 

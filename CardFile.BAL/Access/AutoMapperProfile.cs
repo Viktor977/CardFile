@@ -16,7 +16,9 @@ namespace CardFile.BAL.Access
                   config.AddProfile<ReactionMapper>();
               });
 
+          
             var profiles= configuration.CreateMapper();
+           // configuration.AssertConfigurationIsValid();
             return profiles;
         }
     }
