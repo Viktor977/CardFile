@@ -4,7 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CardFile.DAL.Data
 {
-   public class CardFileDIDalConfiguration
+    /// <summary>
+    /// 
+    /// </summary>
+    public class CardFileDIDalConfiguration
     {
         public static void ConfigureServices(IServiceCollection servicecollection)
         {

@@ -38,19 +38,19 @@ namespace CardFile.BAL.Services
 
         }
 
-        public async Task<HistoryDto> GetByAuthorWithDetailsAsync(string author)
-        {
-            var history = await _uow.HistoryRepository.GetByAuthorWithDetailsAsync(author);
-            var historyDto = _mapper.Map<History, HistoryDto>(history);
-            return historyDto;
-        }
+        //public async Task<HistoryDto> GetByAuthorWithDetailsAsync(string author)
+        //{
+        //    var history = await _uow.HistoryRepository.GetByAuthorWithDetailsAsync(author);
+        //    var historyDto = _mapper.Map<History, HistoryDto>(history);
+        //    return historyDto;
+        //}
 
-        public async Task<HistoryDto> GetByDateWithDetailsAsync(DateTime date)
-        {
-            var history = await _uow.HistoryRepository.GetByDateWithDetailsAsync(date);
-            var historyDto = _mapper.Map<History, HistoryDto>(history);
-            return historyDto;
-        }
+        //public async Task<HistoryDto> GetByDateWithDetailsAsync(DateTime date)
+        //{
+        //    var history = await _uow.HistoryRepository.GetByDateWithDetailsAsync(date);
+        //    var historyDto = _mapper.Map<History, HistoryDto>(history);
+        //    return historyDto;
+        //}
 
         public async Task<HistoryDto> GetByIdAsync(int id)
         {
@@ -59,19 +59,19 @@ namespace CardFile.BAL.Services
             return historyDto;
         }
 
-        public async Task<HistoryDto> GetByIdWithDetailsAsync(int id)
-        {
-            var history = await _uow.HistoryRepository.GetByIdWithDetailsAsync(id);
-            var historyDto = _mapper.Map<History, HistoryDto>(history);
-            return historyDto;
-        }
+        //public async Task<HistoryDto> GetByIdWithDetailsAsync(int id)
+        //{
+        //    var history = await _uow.HistoryRepository.GetByIdWithDetailsAsync(id);
+        //    var historyDto = _mapper.Map<History, HistoryDto>(history);
+        //    return historyDto;
+        //}
 
-        public async Task<HistoryDto> GetByTitleWithDetailsAsync(string title)
-        {
-            var history = await _uow.HistoryRepository.GetByTitleWithDetailsAsync(title);
-            var historyDto = _mapper.Map<History, HistoryDto>(history);
-            return historyDto;
-        }
+        //public async Task<HistoryDto> GetByTitleWithDetailsAsync(string title)
+        //{
+        //    var history = await _uow.HistoryRepository.GetByTitleWithDetailsAsync(title);
+        //    var historyDto = _mapper.Map<History, HistoryDto>(history);
+        //    return historyDto;
+        //}
 
         public async Task UpdateAsync(HistoryDto model)
         {

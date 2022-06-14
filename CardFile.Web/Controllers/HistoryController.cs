@@ -33,7 +33,7 @@ namespace CardFile.Web.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<HistoryDto>> GetById(int id)
         {
-            var history = await _service.GetByIdWithDetailsAsync(id);
+            var history = await _service.GetByIdAsync(id);
             return Ok(history);
         }
 

@@ -34,17 +34,22 @@ namespace CardFile.BAL.Services
         {
             throw new NotImplementedException();
         }
-
+    
         public Task<TextMaterialDto> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
-
-        public async Task<TextMaterialDto> GetByTitle(string title)
+        
+        //TODO
+        public async Task<TextMaterialDto> SearchByFilter(FilterSearchDto filter)
         {
-            var text = await _uow.TextMaterialRepository.GetByTitle(title);
-            var textDto = _mapper.Map<TextMaterial, TextMaterialDto>(text);
-            return textDto;
+            if (!string.IsNullOrWhiteSpace(filter.TitleText))
+            {
+                var text = await _uow.TextMaterialRepository.GetByTitleAsync(filter.TitleText);
+                var textDto = _mapper.Map<TextMaterial, TextMaterialDto>(text);
+                return textDto;
+            }
+            return null;
         }
 
         public Task UpdateAsync(TextMaterialDto model)

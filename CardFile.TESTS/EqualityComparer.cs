@@ -79,4 +79,29 @@ namespace CardFile.TESTS
             return obj.GetHashCode();
         }
     }
+    internal class TextMaterialEqualityComparer : IEqualityComparer<TextMaterial>
+    {
+        public bool Equals([AllowNull] TextMaterial x, [AllowNull] TextMaterial y)
+        {
+            if (x is null && y is null)
+            {
+                return true;
+            }
+            if (x is null || y is null)
+            {
+                return false;
+            }
+
+            return x.Id == y.Id
+                           && x.Title == y.Title
+                           && x.DatePublish == y.DatePublish
+                           && x.Author == y.Author
+                           && x.Article == y.Article;
+        }
+
+        public int GetHashCode([DisallowNull] TextMaterial obj)
+        {
+            return obj.GetHashCode();
+        }
+    }
 }

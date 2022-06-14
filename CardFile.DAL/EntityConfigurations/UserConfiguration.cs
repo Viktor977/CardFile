@@ -20,10 +20,6 @@ namespace CardFile.DAL.EntityConfigurations
                 .HasForeignKey<UserProfile>(t => t.UserId)
                 .IsRequired();
 
-            //builder.HasMany(t => t.Materials)
-            //    .WithOne(t => t.User)
-            //    .HasForeignKey(t => t.ReaderId)
-            //    .IsRequired();
         }
     }
 }

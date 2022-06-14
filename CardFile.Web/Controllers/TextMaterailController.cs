@@ -19,42 +19,8 @@ namespace CardFile.Web.Controllers
         {
             _service = service;
         }
-        //// GET: api/<TextMaterailController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{title
-        //    return new string[] { "value1", "value2" };
-        //}
+        
+        
 
-        //// GET api/<TextMaterailController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-        [HttpGet("title")]
-        public async Task<ActionResult<TextMaterialDto>>GetByTitle(string title)
-        {
-            var text = await _service.GetByTitle(title);
-            return Ok(text);
-        }
-
-        //// POST api/<TextMaterailController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/<TextMaterailController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<TextMaterailController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

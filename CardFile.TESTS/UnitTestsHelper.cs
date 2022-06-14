@@ -52,9 +52,9 @@ namespace CardFile.TESTS
             context.Reactions.AddRange(reactionTwo);
             context.Reactions.AddRange(reactionThree);
 
-            var textOne = new TextMaterial { Id = 1, Allows = Allows.Allowed, DatePublish = new DateTime(2020, 12, 21), Author = "Doe A." };
-            var textTwo = new TextMaterial { Id = 2, Allows = Allows.Accepted, DatePublish = new DateTime(2020, 12, 22), Author = "Doe B." };
-            var textThree = new TextMaterial { Id = 3, Allows = Allows.Rejected, DatePublish = new DateTime(2020, 12, 23), Author = "Doe C." };
+            var textOne = new TextMaterial { Id = 1, Allows = Allows.Allowed, DatePublish = new DateTime(2020, 12, 21), Author = "Doe A." ,Title="Test1",Article="some text1"};
+            var textTwo = new TextMaterial { Id = 2, Allows = Allows.Accepted, DatePublish = new DateTime(2020, 12, 22), Author = "Doe B." ,Title="Test2",Article="some text2"};
+            var textThree = new TextMaterial { Id = 3, Allows = Allows.Rejected, DatePublish = new DateTime(2020, 12, 23), Author = "Doe C.", Title = "Test3", Article ="some text3" };
             context.Materials.AddRange(textOne);
             context.Materials.AddRange(textTwo);
             context.Materials.AddRange(textThree);
@@ -68,5 +68,6 @@ namespace CardFile.TESTS
 
             context.SaveChanges();
         }
+       
     }
 }

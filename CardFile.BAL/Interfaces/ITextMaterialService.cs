@@ -8,6 +8,7 @@ namespace CardFile.BAL.Interfaces
 {
     public interface ITextMaterialService : ICrud<TextMaterialDto>
     {
-        public Task<TextMaterialDto> GetByTitle(string title);
+       
+        public Task<TextMaterialDto>SearchByFilter(FilterSearchDto filter);
     }
 }

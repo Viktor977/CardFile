@@ -2,9 +2,7 @@
 using CardFile.DAL.Entities;
 using CardFile.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CardFile.DAL.Repositories
@@ -24,7 +22,6 @@ namespace CardFile.DAL.Repositories
         public void Delete(User entity)
         {
             _context.Users.Remove(entity);
-
         }
 
         public async Task DeleteByIdAsync(int id)
@@ -49,15 +46,7 @@ namespace CardFile.DAL.Repositories
                 .SingleAsync(t => t.Id == id);
             return user;
         }
-
-        //public async Task<User> GetUser(string password, string email)
-        //{
-        //    var user = await _context.Users.Include(t => t.Profile).
-               
-
-        //    return user;
-        //}
-
+     
         public  void Update(User entity)
         {
             _context.Users.Update(entity);

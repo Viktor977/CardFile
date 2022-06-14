@@ -28,6 +28,7 @@ namespace CardFile.TESTS.DataTests
             //Assert
             Assert.That(context.Histories.Count(), Is.EqualTo(3), message: "AddAsync method works incorrect");
         }
+
         [Test]
         public async Task HistoryRepository_Update_UpdatesEntity()
         {
@@ -57,5 +58,7 @@ namespace CardFile.TESTS.DataTests
                 TextId = 9
             }).Using(new HistoryEqualityCompare()), message: "Update method works incorrect");
         }
+
+       
     }
 }
