@@ -17,16 +17,16 @@ namespace CardFile.DAL.EntityConfigurations
             builder.Property(t => t.Article).HasMaxLength(10000);
 
             builder.Property(t => t.Allows).HasConversion(x => x.ToString(),
-              x => (Allows)Enum.Parse(typeof(Roles), x));
+              x => (Allows)Enum.Parse(typeof(Allows), x));
 
-            builder.HasMany(t => t.Users)
+            builder.HasMany(t => t.History)
                 .WithOne(t => t.Material)
                 .HasForeignKey(t => t.TextId)
                 .IsRequired();
 
             builder.HasMany(t => t.Reactions)
                 .WithOne(t => t.Text)
-                .HasForeignKey(t => t.Id);
+                .HasForeignKey(t => t.TextId).HasPrincipalKey(t=>t.Id);
         }
     }
 }

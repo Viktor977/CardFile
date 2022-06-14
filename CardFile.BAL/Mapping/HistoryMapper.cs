@@ -11,7 +11,7 @@ namespace CardFile.BAL.Mapping
     {
         public HistoryMapper()
         {
-            CreateMap<History, HistiryDto>().ReverseMap();
+            CreateMap<History, HistoryDto>().ReverseMap();
         }
     }
 }

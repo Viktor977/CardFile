@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
 
@@ -7,7 +7,7 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './admin-users.component.html',
   styleUrls: ['./admin-users.component.css']
 })
-export class AdminUsersComponent implements OnInit {
+export class AdminUsersComponent implements OnInit, OnDestroy {
 
     users!: User[]
     constructor(private userService: UserService) { }
@@ -19,6 +19,9 @@ export class AdminUsersComponent implements OnInit {
             }),
             ((err: any) => { console.log(err) })
         );
-  }
+    }
 
+    ngOnDestroy(): void {
+        this.userService.getAllUsers();
+    }
 }

@@ -12,43 +12,44 @@ namespace CardFile.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class HistoryController : ControllerBase
     {
-        private readonly IUserService _service;
+        private readonly IHistoryService _service;
 
-        public UserController(IUserService service)
+        public HistoryController(IHistoryService service)
         {
             _service = service;
         }
-        // GET: api/<UserController>
+
+        // GET: api/<HistoryController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers()
+        public async Task<ActionResult<IEnumerable<HistoryDto>>> GetAllHistory()
         {
-            var users = await _service.GetAllAsync();
-            return Ok(users);
+            var histories = await _service.GetAllAsync();
+            return Ok(histories);
         }
 
-        // GET api/<UserController>/5
+        // GET api/<HistoryController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserDto>> GetById(int id)
+        public async Task<ActionResult<HistoryDto>> GetById(int id)
         {
-            var user = await _service.GetByIdWithDetailsAsync(id);
-            return Ok(user);
+            var history = await _service.GetByIdWithDetailsAsync(id);
+            return Ok(history);
         }
 
-        //// POST api/<UserController>
+        //// POST api/<HistoryController>
         //[HttpPost]
         //public void Post([FromBody] string value)
         //{
         //}
 
-        //// PUT api/<UserController>/5
+        //// PUT api/<HistoryController>/5
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody] string value)
         //{
         //}
 
-        //// DELETE api/<UserController>/5
+        //// DELETE api/<HistoryController>/5
         //[HttpDelete("{id}")]
         //public void Delete(int id)
         //{

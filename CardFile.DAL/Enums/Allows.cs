@@ -20,7 +20,7 @@ namespace CardFile.DAL.Enums
         /// <summary>
         /// The Regected
         /// </summary>
-        Regected
+        Rejected
 
     }
 }

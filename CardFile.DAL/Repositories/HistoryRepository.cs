@@ -39,9 +39,51 @@ namespace CardFile.DAL.Repositories
             return await _context.Histories.ToListAsync();
         }
 
+        public async Task<History> GetByAuthorWithDetailsAsync(string author)
+        {
+            var card = await _context.Histories
+                .Include(t => t.Material)
+                .ThenInclude(t => t.Reactions)
+                .SingleAsync(t => t.Material.Author == author);
+
+            return card;
+        }
+
+        public async Task<History> GetByDateWithDetailsAsync(DateTime date)
+        {
+            var card = await _context.Histories
+                .Include(t => t.Material)
+                .ThenInclude(t => t.Reactions)
+                .SingleAsync(t => t.Material.DatePublish == date);
+
+            return card;
+
+        }
+
         public async  Task<History> GetByIdAsync(int id)
         {
             return await _context.Histories.FindAsync(id);
+        }
+
+        public async Task<History> GetByIdWithDetailsAsync(int id)
+        {
+            var card = await _context.Histories
+               
+                .Include(t => t.Material)
+                
+                .SingleAsync(t => t.TextId==id);
+
+            return card;
+        }
+
+        public async Task<History> GetByTitleWithDetailsAsync(string title)
+        {
+            var card = await _context.Histories.Include(t=>t.User)
+                .Include(t => t.Material)
+                .ThenInclude(t => t.Reactions)
+                .SingleAsync(t => t.Material.Title == title);
+
+            return card;
         }
 
         public void Update(History entity)

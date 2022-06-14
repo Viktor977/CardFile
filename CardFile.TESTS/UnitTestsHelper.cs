@@ -54,7 +54,7 @@ namespace CardFile.TESTS
 
             var textOne = new TextMaterial { Id = 1, Allows = Allows.Allowed, DatePublish = new DateTime(2020, 12, 21), Author = "Doe A." };
             var textTwo = new TextMaterial { Id = 2, Allows = Allows.Accepted, DatePublish = new DateTime(2020, 12, 22), Author = "Doe B." };
-            var textThree = new TextMaterial { Id = 3, Allows = Allows.Regected, DatePublish = new DateTime(2020, 12, 23), Author = "Doe C." };
+            var textThree = new TextMaterial { Id = 3, Allows = Allows.Rejected, DatePublish = new DateTime(2020, 12, 23), Author = "Doe C." };
             context.Materials.AddRange(textOne);
             context.Materials.AddRange(textTwo);
             context.Materials.AddRange(textThree);

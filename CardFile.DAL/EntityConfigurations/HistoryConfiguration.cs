@@ -12,6 +12,11 @@ namespace CardFile.DAL.EntityConfigurations
         public void Configure(EntityTypeBuilder<History> builder)
         {
             builder.HasKey(t => t.Id);
+            builder.HasOne(t => t.User).WithMany(t => t.Materials).HasForeignKey(t => t.ReaderId).IsRequired();
+            //builder.HasMany(t => t.Materials)
+            //  .WithOne(t => t.User)
+            //  .HasForeignKey(t => t.ReaderId)
+            //  .IsRequired();
         }
     }
 }

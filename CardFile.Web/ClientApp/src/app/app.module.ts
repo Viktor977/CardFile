@@ -9,6 +9,8 @@ import { NavMenuComponent } from './components/public/nav-menu/nav-menu.componen
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { HomeComponent } from './components/public/home/home.component';
+import { FooterComponent } from './components/public/footer/footer.component';
+import { ContentComponent } from './components/public/content/content.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HomeComponent } from './components/public/home/home.component';
     NavMenuComponent,
     HomeComponent,
     AdminHomeComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    FooterComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

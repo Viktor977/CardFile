@@ -20,6 +20,8 @@ namespace CardFile.BAL.Access
             CardFileDIDalConfiguration.ConfigureServices(descriptors);
             descriptors.AddScoped<IUserService, UserService>();
             descriptors.AddScoped<IUserProfileService, UserProfileService>();
+            descriptors.AddScoped<ITextMaterialService, TextMaterialService>();
+            descriptors.AddScoped<IHistoryService, HistoryService>();
 
             var profiles = new AutoMapperProfile();
             IMapper mapper = profiles.GetMapper();

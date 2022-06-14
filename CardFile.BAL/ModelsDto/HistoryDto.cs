@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CardFile.BAL.ModelsDto
 {
-    public class HistiryDto 
+    public class HistoryDto 
     {
     }
 }
