@@ -104,4 +104,28 @@ namespace CardFile.TESTS
             return obj.GetHashCode();
         }
     }
+    internal class ReactionEqualityComparer : IEqualityComparer<Reaction>
+    {
+        public bool Equals([AllowNull] Reaction x, [AllowNull] Reaction y)
+        {
+            if (x is null && y is null)
+            {
+                return true;
+            }
+            if (x is null || y is null)
+            {
+                return false;
+            }
+
+            return x.Id == y.Id
+                && x.TextId == y.TextId
+                && x.Assessment == y.Assessment
+                && x.Comment == y.Comment;                
+        }
+
+        public int GetHashCode([DisallowNull] Reaction obj)
+        {
+            return obj.GetHashCode();
+        }
+    }
 }

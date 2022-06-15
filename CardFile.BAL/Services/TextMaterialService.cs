@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CardFile.BAL.Interfaces;
 using CardFile.BAL.ModelsDto;
+using CardFile.BAL.Validation;
 using CardFile.DAL.Entities;
 using CardFile.DAL.Interfaces;
 using System;
@@ -20,41 +21,62 @@ namespace CardFile.BAL.Services
             _uow = work;
             _mapper = mapper;
         }
-        public Task AddAsync(TextMaterialDto model)
+        public async Task AddAsync(TextMaterialDto model)
         {
-            throw new NotImplementedException();
+            var text = _mapper.Map<TextMaterialDto, TextMaterial>(model);
+            await _uow.TextMaterialRepository.AddAsync(text);
         }
 
-        public Task DeleteAsync(int modelId)
+        public async Task DeleteAsync(int modelId)
         {
-            throw new NotImplementedException();
+            await _uow.TextMaterialRepository.DeleteByIdAsync(modelId);
         }
 
-        public Task<IEnumerable<TextMaterialDto>> GetAllAsync()
+        public async Task<IEnumerable<TextMaterialDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var text = await _uow.TextMaterialRepository.GetAllAsync();
+            var textDto = _mapper.Map<IEnumerable<TextMaterial>, IEnumerable<TextMaterialDto>>(text);       
+            return textDto;
         }
     
-        public Task<TextMaterialDto> GetByIdAsync(int id)
+        public async Task<TextMaterialDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var text = await _uow.TextMaterialRepository.GetByIdAsync(id);
+            var textDto = _mapper.Map<TextMaterial, TextMaterialDto>(text);
+            return textDto;
         }
         
         //TODO
         public async Task<TextMaterialDto> SearchByFilter(FilterSearchDto filter)
         {
+            if(filter is null)
+            {
+                throw new CardFileException() ;
+            }
             if (!string.IsNullOrWhiteSpace(filter.TitleText))
             {
-                var text = await _uow.TextMaterialRepository.GetByTitleAsync(filter.TitleText);
+                var text = await _uow.TextMaterialRepository.GetByTitleWithDetailsAsync(filter.TitleText);
                 var textDto = _mapper.Map<TextMaterial, TextMaterialDto>(text);
                 return textDto;
             }
+            if (!string.IsNullOrWhiteSpace(filter.Author)){
+                var text = await _uow.TextMaterialRepository.GetByAuthorWithDetailsAsync(filter.Author);
+                var textDto = _mapper.Map<TextMaterial, TextMaterialDto>(text);
+                return textDto;
+            }
+            var textDate = await _uow.TextMaterialRepository.GetByDateWithDetailsAsync(filter.DataPublication);
+            var textDateDto = _mapper.Map<TextMaterial, TextMaterialDto>(textDate);
+            return textDateDto;
+
             return null;
         }
 
-        public Task UpdateAsync(TextMaterialDto model)
+        public async Task UpdateAsync(TextMaterialDto model)
         {
-            throw new NotImplementedException();
+            var text = _mapper.Map<TextMaterialDto, TextMaterial>(model);
+            _uow.TextMaterialRepository.Update(text);
+            await _uow.SaveAsync();
+
         }
     }
 }

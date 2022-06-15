@@ -8,6 +8,7 @@ namespace CardFile.BAL.Validation
     [Serializable]
    public  class CardFileException : ApplicationException
     {
+        public string AppMessage { get; set; } = "FilterSearch is Null";
         public CardFileException() { }
         public CardFileException(string message) : base(message) { }
         public CardFileException(string message, Exception inner) : base(message, inner) { }

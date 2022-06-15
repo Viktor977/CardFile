@@ -58,14 +58,6 @@ namespace CardFile.DAL.Repositories
             return await _context.Materials.FindAsync(id);
         }
 
-        public async Task<TextMaterial> GetByTitleAsync(string title)
-        {
-            var text = await _context.Materials
-                .Include(t => t.Reactions)
-                .SingleAsync(t => t.Title == title);
-            return text;
-        }
-
         public async Task<TextMaterial> GetByTitleWithDetailsAsync(string title)
         {
             var text = await _context.Materials

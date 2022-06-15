@@ -45,9 +45,9 @@ namespace CardFile.TESTS
             context.Histories.AddRange(historyOne);
             context.Histories.AddRange(historyTwo);
 
-            var reactionOne = new Reaction { Id = 1, Assessment = Assessments.Like, UserId = 1, Comment = "amazing!!!" };
-            var reactionTwo = new Reaction { Id = 2, Assessment = Assessments.Like, UserId = 2, Comment = "cool!" };
-            var reactionThree = new Reaction { Id = 3, Assessment = Assessments.Dislike, UserId = 3, Comment = " " };
+            var reactionOne = new Reaction { Id = 1,TextId=1, Assessment = Assessments.Like, UserId = 1, Comment = "amazing!!!" };
+            var reactionTwo = new Reaction { Id = 2,TextId=1, Assessment = Assessments.Like, UserId = 2, Comment = "cool!" };
+            var reactionThree = new Reaction { Id = 3,TextId=1, Assessment = Assessments.Dislike, UserId = 3, Comment = " " };
             context.Reactions.AddRange(reactionOne);
             context.Reactions.AddRange(reactionTwo);
             context.Reactions.AddRange(reactionThree);
