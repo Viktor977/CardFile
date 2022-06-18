@@ -5,33 +5,37 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './components/public/nav-menu/nav-menu.component';
-import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
-import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
-import { HomeComponent } from './components/public/home/home.component';
-import { FooterComponent } from './components/public/footer/footer.component';
-import { ContentComponent } from './components/public/content/content.component';
+import { SpaModule } from './spa/spa.module';
+import { AuthenticatedComponent } from './routes/authenticated/authenticated.component';
+import { HomeComponent } from './routes/home/home.component';
+import { appRouters } from './routes/app-routes';
+import { UserService } from './spa/services/user.service';
+import { AuthGuard } from './spa/guards/auth.guard';
+import { UserApi } from './spa/users/user-api';
+import { AdminComponent } from './routes/admin/admin.component';
+import { UserComponent } from './routes/user/user.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
+    AuthenticatedComponent,
     HomeComponent,
-    AdminHomeComponent,
-    AdminUsersComponent,
-    FooterComponent,
-    ContentComponent
+    AdminComponent,
+    UserComponent,   
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'user', component: AdminUsersComponent },
-    ])
+    SpaModule,
+    RouterModule.forRoot(appRouters)
   ],
-  providers: [],
+    providers:
+        [UserService,
+            { provide: UserApi, useExisting: UserService }, AuthGuard
+        ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

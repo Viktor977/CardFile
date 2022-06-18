@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace CardFile.DAL.Data
 {
     /// <summary>
-    /// 
+    /// This class provided configuration DI the data layer
     /// </summary>
     public class CardFileDIDalConfiguration
     {

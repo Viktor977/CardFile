@@ -37,22 +37,6 @@ namespace CardFile.Web.Controllers
             return Ok(history);
         }
 
-        //// POST api/<HistoryController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/<HistoryController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<HistoryController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+       
     }
 }

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CardFile.DAL.Enums
 {
+    /// <summary>
+    /// Assesments-user's reactions
+    /// </summary>
     public enum Assessments
     {
         Like,

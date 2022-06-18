@@ -4,7 +4,7 @@
 a {
   color: #0366d6;
 }
-/*
+
 code {
   color: #e01a76;
 }
@@ -14,10 +14,10 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-*/
+
 body {
     font-family: 'Lato', sans-serif;
     font-family: 'PT Sans', sans-serif;
     font-family: 'Rubik', sans-serif;
-    font-family: 'Teko', sans-serif;
+  
 }

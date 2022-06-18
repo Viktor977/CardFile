@@ -19,8 +19,34 @@ namespace CardFile.Web.Controllers
         {
             _service = service;
         }
-        
-        
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<TextMaterialDto>>> GetAllTextFile()
+        {
+            //if (search is null)
+            //{
+            //    var textMaterial = await _service.GetAllAsync();
+            //    if (textMaterial is null) return NotFound();
+            //    return Ok(textMaterial);
+
+            //}
+
+            var text = await _service.GetAllAsync();
+            return Ok(text);
+
+         
+          
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TextMaterialDto>> GetById(int id)
+        {
+            var textMaterial = await _service.GetByIdAsync(id);
+            if (textMaterial is null)
+            {
+                return NotFound();
+            }
+            return Ok(textMaterial);
+        }
 
     }
 }

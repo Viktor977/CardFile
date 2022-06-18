@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.0" />
     <PackageReference Include="FluentAssertions" Version="6.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.6" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
@@ -18,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CardFile.BAL\CardFile.BAL.csproj" />
     <ProjectReference Include="..\CardFile.DAL\CardFile.DAL.csproj" />
+    <ProjectReference Include="..\CardFile.Web\CardFile.Web.csproj" />
   </ItemGroup>
 
 </Project>

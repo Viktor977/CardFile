@@ -1,19 +1,15 @@
 ﻿using AutoMapper;
 using CardFile.BAL.Interfaces;
-using CardFile.BAL.Mapping;
 using CardFile.BAL.Services;
 using CardFile.DAL.Data;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardFile.BAL.Access
 {
     /// <summary>
-    /// 
+    ///  This class provided configuration DI the business layer
     /// </summary>
-   public class CardFileDIBalConfiguration
+    public class CardFileDIBalConfiguration
     {
         public static void ConfigureServices(IServiceCollection descriptors)
         {

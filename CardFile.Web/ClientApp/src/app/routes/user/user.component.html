@@ -1,0 +1,26 @@
+<p *ngIf="!cards"><em>LOAD....</em></p>
+<h3>Regested User</h3>
+<table class='table table-striped' aria-labelledby="tableLabell" *ngIf="cards">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Author</th>
+            <th>Date Public</th>
+            <th>Title</th>
+
+            <th>e</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let card of cards">
+            <td>{{card.id}}</td>
+            <td>{{card.author}}</td>
+            <td>{{card.data}}</td>
+            <td>{{card.title}}</td>
+
+            <td>{{card.article}}</td>
+        </tr>
+
+    </tbody>
+</table>
