@@ -21,9 +21,28 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\directives\**" />
+    <Compile Remove="ClientApp\src\app\helpers\**" />
+    <Compile Remove="ClientApp\src\app\validators\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\directives\**" />
+    <Content Remove="ClientApp\src\app\helpers\**" />
+    <Content Remove="ClientApp\src\app\validators\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\directives\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\helpers\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\validators\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\directives\**" />
+    <None Remove="ClientApp\src\app\helpers\**" />
+    <None Remove="ClientApp\src\app\validators\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\app.menu.ts" />
+    <None Remove="ClientApp\src\app\routes\app.routes.ts" />
+    <None Remove="ClientApp\src\app\spa\services\auth-guard.service.ts" />
+    <None Remove="ClientApp\src\app\spa\users\user-api.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,11 +50,24 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="ClientApp\src\app\routes\" />
     <Folder Include="ClientApp\src\app\spa\interfaces\" />
     <Folder Include="ClientApp\src\app\spa\menu\" />
     <Folder Include="ClientApp\src\app\spa\users\" />
     <Folder Include="ClientApp\src\app\spa\services\" />
+=======
+    <Folder Include="ClientApp\src\app\spa\directives\" />
+    <Folder Include="ClientApp\src\app\spa\menus\" />
+    <Folder Include="ClientApp\src\assets\IMG\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\app.menu.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\routes\app.routes.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\spa\services\auth-guard.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\spa\users\user-api.ts" />
+>>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

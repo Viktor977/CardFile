@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+=======
+/*:host {
+    height: 60px;
+    text-align: right;
+    padding-top: 6px;
+    color: #eee;
+}
+
+div {
+    display: inline;
+    margin-left: 30px;
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+}
+
+.top-img {
+    width: 33px;
+    height: 33px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+*/
+>>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
 :host {
     /* height: 60px; */
     text-align: right;
@@ -45,4 +73,8 @@ span {
 
     .forSmall button {
         padding: 5px 3px
+<<<<<<< HEAD
     }
+=======
+    }
+>>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+<<<<<<< HEAD
 
+=======
+>>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
 @Injectable({
   providedIn: 'root'
 })

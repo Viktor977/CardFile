@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Component, Input, OnInit } from '@angular/core';
+=======
+import { Component, OnInit,Input } from '@angular/core';
+>>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
 import { SpaConfigService } from '../services/spa-config.service';
 import { UserApi } from '../users/user-api';
 
@@ -21,5 +25,8 @@ export class IconBarComponent implements OnInit {
         setTimeout(() => { this.userApi.signOut(); }, 2000);
         console.log('Sign out');
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
 }

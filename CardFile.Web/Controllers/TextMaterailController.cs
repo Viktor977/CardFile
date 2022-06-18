@@ -14,6 +14,7 @@ namespace CardFile.Web.Controllers
     [ApiController]
     public class TextMaterailController : ControllerBase
     {
+
         private ITextMaterialService _service;
         public TextMaterailController(ITextMaterialService service)
         {
@@ -34,8 +35,13 @@ namespace CardFile.Web.Controllers
             var text = await _service.GetAllAsync();
             return Ok(text);
 
+<<<<<<< HEAD
          
           
+=======
+
+
+>>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<TextMaterialDto>> GetById(int id)
@@ -47,6 +53,11 @@ namespace CardFile.Web.Controllers
             }
             return Ok(textMaterial);
         }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
 
     }
 }
