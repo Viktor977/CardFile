@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace CardFile.Web.Controllers
 {
@@ -22,9 +22,21 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TextMaterialDto>>> GetAllTextFile()
+        public async Task<ActionResult<IEnumerable<TextMaterialDto>>> GetAllTextFile([FromQuery] FilterSearchDto filter)
         {
-           
+            if (!string.IsNullOrWhiteSpace(filter.Author))
+            {
+                var textFilter = await _service.SearchByFilter(filter);
+                if (textFilter is null) return BadRequest();
+                return Ok(textFilter);
+            }
+            else if (!string.IsNullOrWhiteSpace(filter.TitleText))
+            {
+                var textFilter = await _service.SearchByFilter(filter);
+                if (textFilter is null) return BadRequest();
+                return Ok(textFilter);
+            }
+
 
             var text = await _service.GetAllAsync();
             return Ok(text);
@@ -40,6 +52,26 @@ namespace CardFile.Web.Controllers
             }
             return Ok(textMaterial);
         }
+        [HttpPost]
+        public async Task<ActionResult>Add([FromBody]TextMaterialDto text)
+        {
+            await _service.AddAsync(text);
+            return Ok();
+        }
+        [HttpPut]
+        public async Task<ActionResult>AddUserReaction([FromBody]TextMaterialDto text)
+        {
+            await _service.UpdateAsync(text);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult>DeliteById(int id)
+        {
+            await _service.DeleteAsync(id);
+            return Ok();
+        }
+
 
     }
 }

@@ -23,13 +23,19 @@ namespace CardFile.BAL.Services
         }
         public async Task AddAsync(TextMaterialDto model)
         {
+            if(model is null)
+            {
+                throw new CardFileException();
+            }
             var text = _mapper.Map<TextMaterialDto, TextMaterial>(model);
             await _uow.TextMaterialRepository.AddAsync(text);
+            await _uow.SaveAsync();
         }
 
         public async Task DeleteAsync(int modelId)
         {
             await _uow.TextMaterialRepository.DeleteByIdAsync(modelId);
+            await _uow.SaveAsync();
         }
 
         public async Task<IEnumerable<TextMaterialDto>> GetAllAsync()
@@ -67,11 +73,7 @@ namespace CardFile.BAL.Services
                 return textDto;
             }
 
-
-            var textDate = await _uow.TextMaterialRepository.GetByDateWithDetailsAsync(filter.DataPublication);
-            var textDateDto = _mapper.Map<TextMaterial, TextMaterialDto>(textDate);
-            return textDateDto;
-
+            return null;
 
         }
 
@@ -81,6 +83,13 @@ namespace CardFile.BAL.Services
             _uow.TextMaterialRepository.Update(text);
             await _uow.SaveAsync();
 
+        }
+
+        public async Task AddUserReaction(ReactionDto model)
+        {
+            var reaction = _mapper.Map<ReactionDto, Reaction>(model);
+            await _uow.ReactionRepository.AddAsync(reaction);
+            await _uow.SaveAsync();
         }
     }
 }

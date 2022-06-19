@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CardFile.BAL.Interfaces;
 using CardFile.BAL.ModelsDto;
+using CardFile.BAL.Validation;
 using CardFile.DAL.Entities;
 using CardFile.DAL.Interfaces;
 using System;
@@ -21,13 +22,19 @@ namespace CardFile.BAL.Services
         }
         public async Task AddAsync(UserProfileDto model)
         {
+            if(model is null)
+            {
+                throw new CardFileException();
+            }
             var profile = _mapper.Map<UserProfileDto, UserProfile>(model);
             await _uow.UserProfileRepository.AddAsync(profile);
+            await _uow.SaveAsync();
         }
 
         public async Task DeleteAsync(int modelId)
         {
              await _uow.UserProfileRepository.DeleteByIdAsync(modelId);
+            await _uow.SaveAsync();
         }
 
         public async Task<IEnumerable<UserProfileDto>> GetAllAsync()

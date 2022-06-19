@@ -36,6 +36,21 @@ namespace CardFile.Web.Controllers
             return Ok(user);
         }
 
+        [HttpPost]
+        public async Task<ActionResult>Add([FromBody]UserDto user)
+        {
+            await _service.AddAsync(user);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult>DeleteById(int id)
+        {
+            await _service.DeleteAsync(id);
+            return Ok();
+
+        }
+       
        
     }
 }

@@ -7,24 +7,24 @@ import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from '../spa/guards/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
+import { MainhomeComponent } from './mainhome/mainhome.component';
 
 export const appRouters: Routes = [
 
+    { path: 'home', component: MainhomeComponent },
     { path: 'sign-in', component: SignInComponent },
     { path: 'register', component: RegistrationComponent },
     {
         path: 'authenticated', component: AuthenticatedComponent, canActivate: [AuthGuard], children: [
             {
-                path: '', canActivateChild: [AuthGuard], children: [
-
+               path: '', canActivateChild: [AuthGuard], children: [
                     { path: 'home', component: HomeComponent },
-                    { path: 'user', component: UserComponent },               
+                    { path: 'user', component: UserComponent } ,
                     { path: 'admin', component: AdminComponent }
                 ]
-            }
-
+            },
         ]
     },
-    { path: '', redirectTo: 'authenticated', pathMatch: 'full' },
-    { path: '**', component: HomeComponent }
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '**', component: MainhomeComponent }
 ]

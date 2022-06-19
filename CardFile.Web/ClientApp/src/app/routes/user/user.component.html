@@ -15,8 +15,8 @@
 
         <tr *ngFor="let card of cards">
             <td>{{card.id}}</td>
-            <td>{{card.author}}</td>
-            <td>{{card.data}}</td>
+            <td>{{card.author | uppercase}}</td>
+            <td>{{card.DatePublish }}</td>
             <td>{{card.title}}</td>
 
             <td>{{card.article}}</td>

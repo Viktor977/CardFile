@@ -15,6 +15,7 @@ import { AdminComponent } from './routes/admin/admin.component';
 import { UserComponent } from './routes/user/user.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
+import { MainhomeComponent } from './routes/mainhome/mainhome.component';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { RouterModule } from "@angular/router";
     AuthenticatedComponent,
     HomeComponent,
     AdminComponent,
-    UserComponent,   
+    UserComponent,
+    MainhomeComponent,
+   
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

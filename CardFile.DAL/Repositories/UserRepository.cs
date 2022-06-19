@@ -17,6 +17,7 @@ namespace CardFile.DAL.Repositories
         public async Task AddAsync(User entity)
         {
             await _context.Users.AddAsync(entity);
+        
         }
 
         public void Delete(User entity)

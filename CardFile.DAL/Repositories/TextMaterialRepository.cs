@@ -19,6 +19,7 @@ namespace CardFile.DAL.Repositories
         public async Task AddAsync(TextMaterial entity)
         {
             await _context.Materials.AddAsync(entity);
+           
         }
 
         public void Delete(TextMaterial entity)
