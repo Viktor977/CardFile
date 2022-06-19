@@ -17,6 +17,7 @@ import { SignInComponent } from './users/sign-in/sign-in.component';
 import { ScreenService } from '../spa/services/screen.service';
 import { MenuService } from './services/menu.service';
 import { SpaConfigService } from './services/spa-config.service';
+import { MainhomeComponent } from '../routes/mainhome/mainhome.component';
 
 
 
@@ -33,7 +34,8 @@ import { SpaConfigService } from './services/spa-config.service';
         MenuComponent,
         MenuItemComponent,
         RegistrationComponent,
-        SignInComponent
+        SignInComponent,
+        MainhomeComponent,
     ],
     imports: [
         CommonModule, RouterModule, FormsModule
