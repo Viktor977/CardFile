@@ -1,6 +1,6 @@
-import { Icon } from "./icon";
+import { Icons } from "./icons";
 
 export interface SpaConfig {
     showUserControls?: boolean;
-    socialIcons?: Array<Icon>;
+    socialIcons?: Array<Icons>;
 }

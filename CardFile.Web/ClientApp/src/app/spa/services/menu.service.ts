@@ -15,8 +15,8 @@ export class MenuService {
         this.showVerticalMenu = !this.showVerticalMenu;
     }
 }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
+
+
+

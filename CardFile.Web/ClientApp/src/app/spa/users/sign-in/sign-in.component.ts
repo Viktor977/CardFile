@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-=======
-import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 
->>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { UserApi } from '../user-api';
 
@@ -29,7 +24,7 @@ export class SignInComponent implements OnInit {
                 console.log(data);
                 this.router.navigate(['/authenticated']);
             },
-<<<<<<< HEAD
+
                 (error) => {
                     this.submitting = false;
                     this.formError = error;
@@ -38,15 +33,6 @@ export class SignInComponent implements OnInit {
     }
 
 
-=======
-            (error) => {
-                this.submitting = false;
-                this.formError = error;
-            });
-        }
-    }
-
->>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
   ngOnInit() {
   }
 

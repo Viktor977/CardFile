@@ -18,7 +18,8 @@ namespace CardFile.BAL.Access
 
           
             var profiles= configuration.CreateMapper();
-           // configuration.AssertConfigurationIsValid();  //TODO
+           // configuration.AssertConfigurationIsValid(); 
+           //TODO
             return profiles;
         }
     }

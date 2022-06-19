@@ -4,12 +4,7 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
-<<<<<<< HEAD
     background-image: url('../../../../assets/cardfiles.jpg');
-=======
-    background-image: url('../../../../assets/IMG/signinlogo.jpg');
-    /* background-image: url('/src/imgs/signinlogo.jpg');*/
->>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
     background-position: center center;
     background-size: cover;
 }

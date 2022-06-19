@@ -1,34 +1,18 @@
-<<<<<<< HEAD
-
-<div *appScreenLarge class='title-bar'>
+<div *screenLarge class='title-bar'>
     <img src="../../../assets/laptop.svg" alt="laptop">
     <div class="menu-area">
         <app-icon-bar [showIcons]='flagForIcons'></app-icon-bar>
-=======
-<div *appScreenLarge class='title-bar'>
-    <img src="../../../assets/IMG/laptop.svg" alt="bosa">
-    <div class="menu-area">
-        <app-icon-bar  [showIcons]='flagForIcons'></app-icon-bar>
->>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
         <app-menu *ngIf="!menuService.isVertical"></app-menu>
 
 
     </div>
 </div>
-<div *appScreenSmall class='title-bar-small'>
+<div *screenSmall class='title-bar-small'>
     <div class="small-icon-holder">
-<<<<<<< HEAD
         <a><img src="../../../assets/menu.svg" (click)='menuService.toggleMenu()'></a>
     </div>
     <app-icon-bar [showIcons]='!flagForIcons'></app-icon-bar>
     <div class="small-image-holder">
         <img src="../../../assets/laptop.svg" alt="laptop" class="small-image">
-=======
-        <a><img src="../../../assets/IMG/menu.png" (click)='menuService.toggleMenu()'></a>
-    </div>
-    <icon-bar [showIcons]='!flagForIcons'></icon-bar>
-    <div class="small-image-holder">
-        <img src="../../../assets/IMG/laptop.svg" alt="laptop" class="small-image">
->>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
     </div>
 </div>

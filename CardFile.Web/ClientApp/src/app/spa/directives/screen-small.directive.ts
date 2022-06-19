@@ -1,12 +1,8 @@
-<<<<<<< HEAD
+
 import { Directive,Input,TemplateRef,ViewContainerRef } from '@angular/core';
 
 import { ScreenService } from '../services/screen.service';
-=======
-import { Directive,Input, TemplateRef, ViewContainerRef, OnInit } from '@angular/core';
-import { ScreenService } from '../services/screen.service';
 
->>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
 @Directive({
   selector: '[appScreenSmall]'
 })
@@ -41,8 +37,7 @@ export class ScreenSmallDirective {
         }
     }
 
-<<<<<<< HEAD
-=======
+
    
->>>>>>> f6d2f18323cb5e1e42303d6dd55075c456b8238f
+
 }
