@@ -8,7 +8,6 @@ import { SpaConfig } from '../interfaces/spaconfig';
 })
 export class SpaConfigService {
 
-    constructor() { }
     showUserControls = true;
 
     socialIcons = new Array<Icons>();

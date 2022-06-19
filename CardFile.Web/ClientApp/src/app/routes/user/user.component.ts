@@ -10,7 +10,6 @@ import { CardService } from '../../spa/services/card.service';
 export class UserComponent implements OnInit {
 
 
-
     cards: Card[];
     constructor(private cardService: CardService) { }
 

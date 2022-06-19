@@ -7,8 +7,6 @@ import { ScreenService } from '../services/screen.service';
 })
 export class ScreenLargeDirective {
 
-
-
     private hasView = false;
 
     constructor(private template: TemplateRef<Object>,
@@ -38,11 +36,5 @@ export class ScreenLargeDirective {
             this.hasView = false;
             this.viewContainer.clear();
         }
-
-
     }
-
-    
-
-
 }

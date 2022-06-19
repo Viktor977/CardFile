@@ -1,18 +1,16 @@
-<div *screenLarge class='title-bar'>
+<div *appScreenLarge class='title-bar'>
     <img src="../../../assets/laptop.svg" alt="laptop">
     <div class="menu-area">
         <app-icon-bar [showIcons]='flagForIcons'></app-icon-bar>
         <app-menu *ngIf="!menuService.isVertical"></app-menu>
-
-
     </div>
 </div>
-<div *screenSmall class='title-bar-small'>
+<div *appScreenSmall class='title-bar-small'>
     <div class="small-icon-holder">
         <a><img src="../../../assets/menu.svg" (click)='menuService.toggleMenu()'></a>
     </div>
     <app-icon-bar [showIcons]='!flagForIcons'></app-icon-bar>
     <div class="small-image-holder">
-        <img src="../../../assets/laptop.svg" alt="laptop" class="small-image">
+        <img src="../../../assets/laptop.svg" alt="Car fest logo" class="small-image">
     </div>
 </div>

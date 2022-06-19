@@ -35,9 +35,5 @@ export class ScreenSmallDirective {
             this.hasView = false;
             this.viewContainer.clear();
         }
-    }
-
-
-   
-
+    } 
 }

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
@@ -15,17 +17,16 @@ import { SignInComponent } from './users/sign-in/sign-in.component';
 import { ScreenService } from '../spa/services/screen.service';
 import { MenuService } from './services/menu.service';
 import { SpaConfigService } from './services/spa-config.service';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
 
-    declarations: [HeaderComponent,
+    declarations: [
+        HeaderComponent,
         ContentComponent,
         BodyComponent,
-        FooterComponent,
-        HeaderComponent,
+        FooterComponent,    
         ScreenLargeDirective,
         ScreenSmallDirective,
         IconBarComponent,
