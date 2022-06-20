@@ -26,10 +26,10 @@ namespace CardFile.TESTS.BusinessTests
                 .Setup(x => x.UserProfileRepository.GetAllAsync())
                 .ReturnsAsync(GetTestUserProfileEntities.AsEnumerable());
 
-            var customerService = new UserProfileService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
+            var userProfileService = new UserProfileService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
 
             //Act
-            var actual = await customerService.GetAllAsync();
+            var actual = await userProfileService.GetAllAsync();
 
             //Assert
             actual.Should().BeEquivalentTo(expected);

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CardFile.BAL.Services
 {
-    class TextMaterialService : ITextMaterialService
+    public class TextMaterialService : ITextMaterialService
     {
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;

@@ -35,7 +35,14 @@ namespace CardFile.DAL.Repositories
         {
             return await _context.Users.ToListAsync();
         }
-
+        public async Task<bool> ChekUser(User entity)
+        {
+            var res = await _context.Users
+                .FirstOrDefaultAsync(t => t.Profile.Login == entity.Profile.Login
+                && t.Profile.Password == entity.Profile.Password);
+            if (res is null) return false;
+            return true;
+        }
         public async Task<User> GetByIdAsync(int id)
         {
             return await _context.Users.FindAsync(id);

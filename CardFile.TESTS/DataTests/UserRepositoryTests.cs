@@ -80,8 +80,8 @@ namespace CardFile.TESTS.DataTests
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
 
-            var customerRepository = new UserRepository(context);
-            var customer = new User
+            var userRepository = new UserRepository(context);
+            var user = new User
             {
                 Id = 1,
                 FirstName = "Benjamin ",
@@ -90,11 +90,11 @@ namespace CardFile.TESTS.DataTests
             };
 
             //Act
-            customerRepository.Update(customer);
+            userRepository.Update(user);
             await context.SaveChangesAsync();
 
             //Assert
-            Assert.That(customer, Is.EqualTo(new User
+            Assert.That(user, Is.EqualTo(new User
             {
                 Id = 1,
                 FirstName = "Benjamin ",
@@ -129,6 +129,36 @@ namespace CardFile.TESTS.DataTests
 
             Assert.That(user.Profile,
                Is.EqualTo(ExpectedUserProfile.FirstOrDefault(i => i.Login == expected.Login)).Using(new UserProfileEqualityCompare()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
+        }
+        [Test]
+        public async Task UserRepository_ChekUser_ReturnTrue()
+        {
+            //Arrange
+            using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
+            var userRepository = new UserRepository(context);
+            var profile = new UserProfile
+            {
+                Id = 1,
+                UserId = 1,
+                Email = "userOne@gmail",
+                Login = "User1",
+                Password = "@usEr!1"
+            };
+            var user = new User
+            {
+                Id = 1,
+                FirstName = "FNameOne",
+                LastName = "LNameOne",
+                Role = Roles.Registered,
+               Profile=profile
+            };
+
+            //Act
+            var expected = await userRepository.ChekUser(user);
+
+            //Assert
+            Assert.IsTrue(expected,message:"Metod Checuser Work incorrect!");
+
         }
 
         private static IEnumerable<User> ExpectedUsers =>

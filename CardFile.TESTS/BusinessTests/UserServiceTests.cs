@@ -56,6 +56,37 @@ namespace CardFile.TESTS.BusinessTests
             //assert
             actual.Should().BeEquivalentTo(expected);
         }
+        [Test]
+        public async Task UserService_CheckUser_ReturnFalse()
+        {
+            //arrange
+            var expected = GetEntityExpected.FirstOrDefault(x => x.Id == 1);
+            var mockUnitOfWork = new Mock<IUnitOfWork>();
+
+            mockUnitOfWork
+                .Setup(m => m.UserRepositiory.ChekUser(It.IsAny<User>()));
+                
+              
+
+            var userService = new UserService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
+
+
+            var userDto = new UserDto
+            {
+                Id = 1,
+                FirstName = "FNameOne",
+                LastName = "LNameOne",
+                Role = Roles.Registered,
+                UserProfileDto = new UserProfileDto { Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1" }
+            };
+
+            //Act
+
+            var actual = await userService.CheckUser(userDto);
+
+            //Assert
+            Assert.IsTrue(!actual, message:"Method CheckUser work incorrect!");
+        }
 
         #region TestData
         public List<UserDto> GetTestUserDto =>

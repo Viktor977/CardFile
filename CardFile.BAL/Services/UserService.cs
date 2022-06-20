@@ -43,6 +43,12 @@ namespace CardFile.BAL.Services
             var users = await _uow.UserRepositiory.GetAllAsync();
             return _mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(users);
         }
+        public async Task<bool>CheckUser(UserDto model)
+        {
+            var user = _mapper.Map<UserDto, User>(model);
+            var result = await _uow.UserRepositiory.ChekUser(user);
+            return result;
+        }
 
         public async Task<UserDto> GetByIdAsync(int id)
         {
