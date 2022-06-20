@@ -8,8 +8,7 @@
             <th>Author</th>
             <th>Date Public</th>
             <th>Title</th>
-
-            <th>e</th>
+            <th>Text</th>
         </tr>
     </thead>
     <tbody>
@@ -17,9 +16,8 @@
         <tr *ngFor="let card of cards">
             <td>{{card.id}}</td>
             <td>{{card.author}}</td>
-            <td>{{card.data}}</td>
+            <td>{{card.DatePublish | date:'short'}}</td>
             <td>{{card.title}}</td>
-
             <td>{{card.article}}</td>
         </tr>
 

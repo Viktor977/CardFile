@@ -1,14 +1,20 @@
 <p *ngIf="!cards"><em>LOAD....</em></p>
 <h3>Regested User</h3>
+<h3>Search by Title</h3>
+<input type="text" placeholder="input card title" [(ngModel)]="searchTitle">
+<button (click)="search()">Search</button>
+
+
 <table class='table table-striped' aria-labelledby="tableLabell" *ngIf="cards">
+
     <thead>
         <tr>
             <th>Id</th>
             <th>Author</th>
             <th>Date Public</th>
             <th>Title</th>
-
-            <th>e</th>
+            <th>Text</th>
+            <th>Your reactions</th>
         </tr>
     </thead>
     <tbody>
@@ -16,11 +22,12 @@
         <tr *ngFor="let card of cards">
             <td>{{card.id}}</td>
             <td>{{card.author | uppercase}}</td>
-            <td>{{card.DatePublish }}</td>
+            <td>{{card.DatePublish | date:'short'}}</td>
             <td>{{card.title}}</td>
-
             <td>{{card.article}}</td>
+            <td><button btn class="btn btn-sm btn-warning"  (click)="handleLikedText($event,card.id)">Like</button></td>
         </tr>
 
     </tbody>
 </table>
+ 

@@ -5,7 +5,7 @@ export interface Card {
     title?: string;
     author?: string;
     article?: string;
-    DatePublish?: string;
+    DatePublish?: any;
     allows?: number;
     users?: Object[];
     reactions?: Object[];

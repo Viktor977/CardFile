@@ -21,6 +21,7 @@ import { MainhomeComponent } from '../routes/mainhome/mainhome.component';
 
 
 
+
 @NgModule({
 
     declarations: [
@@ -36,6 +37,7 @@ import { MainhomeComponent } from '../routes/mainhome/mainhome.component';
         RegistrationComponent,
         SignInComponent,
         MainhomeComponent,
+      
     ],
     imports: [
         CommonModule, RouterModule, FormsModule

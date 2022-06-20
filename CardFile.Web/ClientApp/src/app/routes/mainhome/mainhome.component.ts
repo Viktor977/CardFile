@@ -29,6 +29,4 @@ export class MainhomeComponent implements OnInit {
         this.cards = this.cards.filter(card => card.title.startsWith(this.searchTitle));
     }
 
- 
-
 }

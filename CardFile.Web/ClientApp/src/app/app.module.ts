@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SpaModule } from './spa/spa.module';
-
 import { AuthenticatedComponent } from './routes/authenticated/authenticated.component';
 import { HomeComponent } from './routes/home/home.component';
 import { appRouters } from './routes/app-routes';
@@ -17,7 +15,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +22,7 @@ import { RouterModule } from "@angular/router";
     HomeComponent,
     AdminComponent,
     UserComponent,
-  
+   
    
   ],
   imports: [

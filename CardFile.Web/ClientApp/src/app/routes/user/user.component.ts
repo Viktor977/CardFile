@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Card } from '../../spa/interfaces/card';
 import { CardService } from '../../spa/services/card.service';
 
@@ -8,9 +8,17 @@ import { CardService } from '../../spa/services/card.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-
+    searchTitle: string
+    id: number;
+    selectedCard: Card;
     cards: Card[];
+    private _cards: Card[];
+
+    @Input() card!: Card;
+
+    @Output()
+    onLikePost = new EventEmitter<Card>();
+
     constructor(private cardService: CardService) { }
 
     ngOnInit() {
@@ -18,5 +26,26 @@ export class UserComponent implements OnInit {
             ((cards: Card[]) => { this.cards = cards }), ((e: any) => { console.log(e) }));
     }
  
+    selct(card: Card) {
+        this.selectedCard = card;
+    }
 
+    search() {
+        if (this.searchTitle.length === 0) {
+            this.cards = this._cards;
+            return;
+        }
+        this._cards = this.cards;
+        this.cards = this.cards.filter(card => card.title.startsWith(this.searchTitle));
+    }
+
+    handleLikedText(event:Event,id:number) {
+      this.id=id;
+        this.cardService.like(this.id);
+      
+    }
+
+    onLike() {
+        
+    }
 }
