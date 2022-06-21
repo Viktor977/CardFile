@@ -20,14 +20,6 @@ namespace CardFile.DAL.Data
             }
         }
 
-        public IUserProfileRepository UserProfileRepository
-        {
-            get
-            {
-                return new UserProfileRepository(_context);
-            }
-        }
-
         public ITextMaterialRepository TextMaterialRepository
         {
             get

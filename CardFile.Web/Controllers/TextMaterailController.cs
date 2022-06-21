@@ -65,12 +65,7 @@ namespace CardFile.Web.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult>DeliteById(int id)
-        {
-            await _service.DeleteAsync(id);
-            return Ok();
-        }
+      
 
 
     }

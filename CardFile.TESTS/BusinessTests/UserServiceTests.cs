@@ -38,24 +38,25 @@ namespace CardFile.TESTS.BusinessTests
 
         [TestCase(1)]
         [TestCase(2)]
-        public async Task UserService_GetByIdWithDetailsAsync_ReturnsUserDto(int id)
+        public async Task UserService_GetByIdAsync_ReturnsUserDto(int id)
         {
             //arrange
             var expected = GetEntityExpected.FirstOrDefault(x => x.Id == id);
             var mockUnitOfWork = new Mock<IUnitOfWork>();
 
             mockUnitOfWork
-                .Setup(m => m.UserRepositiory.GetByIdWithDetailsAsync(It.IsAny<int>()))
+                .Setup(m => m.UserRepositiory.GetByIdAsync(It.IsAny<int>()))
                 .ReturnsAsync(GetEntity.FirstOrDefault(x => x.Id == id));
 
             var userService = new UserService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
 
             //act
-            var actual = await userService.GetByIdWithDetailsAsync(1);
+            var actual = await userService.GetByIdAsync(1);
 
             //assert
             actual.Should().BeEquivalentTo(expected);
         }
+
         [Test]
         public async Task UserService_CheckUser_ReturnFalse()
         {
@@ -63,10 +64,13 @@ namespace CardFile.TESTS.BusinessTests
             var expected = GetEntityExpected.FirstOrDefault(x => x.Id == 1);
             var mockUnitOfWork = new Mock<IUnitOfWork>();
 
-            mockUnitOfWork
-                .Setup(m => m.UserRepositiory.ChekUser(It.IsAny<User>()));
-                
-              
+
+
+
+            //mockUnitOfWork
+            //    .Setup(m => m.UserRepositiory.ChekUser();
+
+
 
             var userService = new UserService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
 
@@ -77,51 +81,38 @@ namespace CardFile.TESTS.BusinessTests
                 FirstName = "FNameOne",
                 LastName = "LNameOne",
                 Role = Roles.Registered,
-                UserProfileDto = new UserProfileDto { Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1" }
+                 Email = "userOne@gmail",
+                Login = "User1",
+                Password = "@usEr!1" 
             };
 
             //Act
 
-            var actual = await userService.CheckUser(userDto);
+            var actual = await userService.CheckUser(userDto.Email, userDto.Password);
 
-            //Assert
-            Assert.IsTrue(!actual, message:"Method CheckUser work incorrect!");
+            // Assert
+            
+
         }
 
         #region TestData
         public List<UserDto> GetTestUserDto =>
            new List<UserDto>()
            {
-                 new UserDto { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered },
-                 new UserDto { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered },
-                 new UserDto { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered }
+                 new UserDto { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1"},
+                 new UserDto { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered ,Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" },
+                 new UserDto { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered ,Email = "userThree@gmail", Login = "User3", Password = "@usEr!3"}
 
            };
 
         public List<User> GetTestUserEntities =>
            new List<User>()
            {
-                 new User { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered },
-                 new User { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered },
-                 new User { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered }
+                 new User { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered , Email = "userOne@gmail", Password = "@usEr!1"},
+                 new User { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered , Email = "userTwo@gmail" , Password = "@usEr!2"},
+                 new User { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered ,Email = "userThree@gmail", Password = "@usEr!3"}
            };
-        public List<UserProfileDto> GetTestUserProfileDto =>
-          new List<UserProfileDto>()
-          {
-                new UserProfileDto { Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1" },
-                new UserProfileDto { Id = 2, UserId = 2, Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" },
-                new UserProfileDto { Id = 3, UserId = 3, Email = "userThree@gmail", Login = "User3", Password = "@usEr!3" }
-
-          };
-
-        public List<UserProfileDto> GetEntityUserProfileDto =>
-          new List<UserProfileDto>()
-          {
-                new UserProfileDto { Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1" },
-                new UserProfileDto { Id = 2, UserId = 2, Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" },
-                new UserProfileDto { Id = 3, UserId = 3, Email = "userThree@gmail", Login = "User3", Password = "@usEr!3" }
-          };
-
+       
         public List<UserDto> GetEntityExpected =>
            new List<UserDto>()
            {
@@ -130,11 +121,20 @@ namespace CardFile.TESTS.BusinessTests
                FirstName = "FNameOne",
                LastName = "LNameOne",
                Role = Roles.Registered,
-               UserProfileDto=new UserProfileDto{Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1"}
+               Email = "userOne@gmail",
+                 Login = "User1",
+                   Password = "@usEr!1"
                },
 
-                 new UserDto { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Admin ,
-                 UserProfileDto= new UserProfileDto { Id = 2, UserId = 2, Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" },
+                 new UserDto {
+                     Id = 2,
+                     FirstName = "FNameTwo",
+                     LastName = "LNameTwo",
+                     Role = Roles.Admin ,
+                     Email = "userTwo@gmail",
+                     Login = "User2", 
+                     Password = "@usEr!2" 
+
                  },
 
            };
@@ -146,11 +146,17 @@ namespace CardFile.TESTS.BusinessTests
                FirstName = "FNameOne",
                LastName = "LNameOne",
                Role = Roles.Registered,
-               Profile=new UserProfile{Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1"}
+               Email = "userOne@gmail", 
+                Password = "@usEr!1"
                },
 
-                new User { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Admin ,
-                Profile= new UserProfile { Id = 2, UserId = 2, Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" },
+                new User { 
+                    Id = 2, 
+                    FirstName = "FNameTwo",
+                    LastName = "LNameTwo",
+                    Role = Roles.Admin ,
+                    Email = "userTwo@gmail" ,
+                    Password = "@usEr!2" 
                 },
 
           };

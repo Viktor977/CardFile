@@ -17,47 +17,37 @@ namespace CardFile.DAL.Repositories
         public async Task AddAsync(User entity)
         {
             await _context.Users.AddAsync(entity);
-        
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(User entity)
+        public async void Delete(User entity)
         {
-            _context.Users.Remove(entity);
-        }
+            _context.Users.RemoveRange(entity);
+            await _context.SaveChangesAsync();
 
-        public async Task DeleteByIdAsync(int id)
-        {
-            var user =await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _context.Users.ToListAsync();
         }
-        public async Task<bool> ChekUser(User entity)
+        public async Task<User> ChekUser(string email,string password)
         {
-            var res = await _context.Users
-                .FirstOrDefaultAsync(t => t.Profile.Login == entity.Profile.Login
-                && t.Profile.Password == entity.Profile.Password);
-            if (res is null) return false;
-            return true;
+            var user = await _context.Users
+                .FirstOrDefaultAsync(t => t.Email == email
+                && t.Password == password);
+            if (user is null) return null;
+            return user;
         }
         public async Task<User> GetByIdAsync(int id)
         {
             return await _context.Users.FindAsync(id);
         }
-       public async Task<User>GetByIdWithDetailsAsync(int id)
+           
+        public async void Update(User entity)
         {
-            var user = await _context.Users
-                .Include(t => t.Profile)
-                .SingleAsync(t => t.Id == id);
-            return user;
-        }
-     
-        public  void Update(User entity)
-        {
-            _context.Users.Update(entity);
+            _context.Users.Update(entity);      
+            await _context.SaveChangesAsync();
            
         }
     }

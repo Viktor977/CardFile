@@ -4,14 +4,16 @@ using CardFile.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CardFile.DAL.Migrations
 {
     [DbContext(typeof(CardFileDBContext))]
-    partial class CardFileDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220621203540_CardFileDBchangeDeleteUserInfo")]
+    partial class CardFileDBchangeDeleteUserInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

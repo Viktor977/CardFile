@@ -13,8 +13,7 @@ namespace CardFile.DAL.Data
         {
             servicecollection.AddScoped<CardFileDBContext>();
             servicecollection.AddScoped<IUnitOfWork, UnitOfWork>();
-            servicecollection.AddScoped<IUserRepository, UserRepository>();
-            servicecollection.AddScoped<IUserProfileRepository, UserProfileRepository>();
+            servicecollection.AddScoped<IUserRepository, UserRepository>();     
             servicecollection.AddScoped<ITextMaterialRepository, TextMaterialRepository>();
             servicecollection.AddScoped<IReactionRepository, ReactionRepository>();
             servicecollection.AddScoped<IHistoryRepository, HistoryRepository>();

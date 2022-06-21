@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { map, tap } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 import { Card } from '../interfaces/card';
 
 
@@ -13,7 +13,6 @@ import { Card } from '../interfaces/card';
 
 export class CardService {
 
-    url = "/api/TextMaterail";
     cards: Card[] = [];
     card: Card;
     cardId: number;
@@ -27,5 +26,13 @@ export class CardService {
     like(id: number) {
         this.cardId = id;
         console.log(this.cardId);
+    }
+
+    confirm(id: number) {
+
+    }
+
+    reject(id: number) {
+
     }
 }

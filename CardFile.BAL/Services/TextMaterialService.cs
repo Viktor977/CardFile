@@ -32,12 +32,7 @@ namespace CardFile.BAL.Services
             await _uow.SaveAsync();
         }
 
-        public async Task DeleteAsync(int modelId)
-        {
-            await _uow.TextMaterialRepository.DeleteByIdAsync(modelId);
-            await _uow.SaveAsync();
-        }
-
+      
         public async Task<IEnumerable<TextMaterialDto>> GetAllAsync()
         {
             var text = await _uow.TextMaterialRepository.GetAllAsync();
@@ -89,6 +84,13 @@ namespace CardFile.BAL.Services
         {
             var reaction = _mapper.Map<ReactionDto, Reaction>(model);
             await _uow.ReactionRepository.AddAsync(reaction);
+            await _uow.SaveAsync();
+        }
+
+        public async Task DeleteAsync(TextMaterialDto model)
+        {
+            var material = _mapper.Map<TextMaterialDto, TextMaterial>(model);
+            _uow.TextMaterialRepository.Delete(material);
             await _uow.SaveAsync();
         }
     }

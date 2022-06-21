@@ -16,8 +16,6 @@ namespace CardFile.DAL.Interfaces
 
         void Delete(TEntity entity);
 
-        Task DeleteByIdAsync(int id);
-
         void Update(TEntity entity);
     }
 }

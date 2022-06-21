@@ -32,15 +32,10 @@ namespace CardFile.Web.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDto>> GetById(int id)
         {
-            var user = await _service.GetByIdWithDetailsAsync(id);
+            var user = await _service.GetByIdAsync(id);
             return Ok(user);
         }
-        [HttpGet("validation")]
-        public async Task<ActionResult<bool>>CheckUser([FromBody]UserDto user)
-        {
-            var result = await _service.CheckUser(user);
-            return Ok(result);
-        }
+        
 
         [HttpPost]
         public async Task<ActionResult>Add([FromBody]UserDto user)
@@ -49,13 +44,5 @@ namespace CardFile.Web.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult>DeleteById(int id)
-        {
-            await _service.DeleteAsync(id);
-            return Ok();
-
-        }     
-       
     }
 }

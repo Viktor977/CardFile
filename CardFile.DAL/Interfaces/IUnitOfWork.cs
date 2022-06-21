@@ -7,8 +7,7 @@ namespace CardFile.DAL.Interfaces
 {
     public interface IUnitOfWork
     {
-        IUserRepository UserRepositiory { get; }
-        IUserProfileRepository UserProfileRepository { get; }
+        IUserRepository UserRepositiory { get; }     
         ITextMaterialRepository TextMaterialRepository { get; }
         IReactionRepository ReactionRepository { get; }
         IHistoryRepository HistoryRepository { get; }

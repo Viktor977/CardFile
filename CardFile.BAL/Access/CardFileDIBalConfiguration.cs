@@ -14,11 +14,10 @@ namespace CardFile.BAL.Access
         public static void ConfigureServices(IServiceCollection descriptors)
         {
             CardFileDIDalConfiguration.ConfigureServices(descriptors);
-            descriptors.AddScoped<IUserService, UserService>();
-            descriptors.AddScoped<IUserProfileService, UserProfileService>();
+            descriptors.AddScoped<IUserService, UserService>();        
             descriptors.AddScoped<ITextMaterialService, TextMaterialService>();
             descriptors.AddScoped<IHistoryService, HistoryService>();
-
+            descriptors.AddScoped<IReactionService, ReactionService>();
             var profiles = new AutoMapperProfile();
             IMapper mapper = profiles.GetMapper();
             descriptors.AddSingleton(mapper);

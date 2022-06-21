@@ -19,13 +19,16 @@ namespace CardFile.DAL.Repositories
         }
         public async Task AddAsync(History entity)
         {
-            await _context.Histories.AddAsync(entity);
+          
+            await _context.Histories.AddRangeAsync(entity);
+            await _context.SaveChangesAsync();
 
         }
 
-        public void Delete(History entity)
+        public  async void Delete(History entity)
         {
-            _context.Histories.Remove(entity);
+            _context.Histories.RemoveRange(entity);
+           await _context.SaveChangesAsync();
         }
 
         public async Task DeleteByIdAsync(int id)
@@ -46,9 +49,12 @@ namespace CardFile.DAL.Repositories
         }
 
 
-        public void Update(History entity)
+        public async void Update(History entity)
         {
             _context.Histories.Update(entity);
+            await _context.SaveChangesAsync();
+
         }
+    
     }
 }

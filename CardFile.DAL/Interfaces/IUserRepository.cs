@@ -8,7 +8,6 @@ namespace CardFile.DAL.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        public Task<User> GetByIdWithDetailsAsync(int id);
-        public Task<bool> ChekUser(User entity);
+        public Task<User> ChekUser(string email,string password);
     }
 }

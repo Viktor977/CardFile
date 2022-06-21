@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { User } from '../../models/user';
 import { Observable, of, throwError } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +13,17 @@ export class UserService {
 
 
     isAuthenticated = false;
+    users: User[];
+    user: User;
+    constructor(private router: Router, private http: HttpClient) { }
 
-    constructor(private router: Router) { }
+    getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(`${environment.apiUrl}/User`).pipe(map((users)=> this.users));
+    };
+
+    getUserById(id:number) {
+        return this.http.get<User>(`${environment.apiUrl}/User/${id}`);
+    }
 
     signIn(email: string, password: string): Observable<any> {
         if (email === 'test@gmail.com' && password === '123') {

@@ -13,6 +13,6 @@ namespace CardFile.BAL.Interfaces
 
         Task UpdateAsync(TModel model);
 
-        Task DeleteAsync(int modelId);
+        Task DeleteAsync(TModel model);
     }
 }

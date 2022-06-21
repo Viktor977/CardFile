@@ -33,9 +33,9 @@ namespace CardFile.TESTS
 
         public static void SeedData(CardFileDBContext context)
         {
-            var userOne = new User { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered };
-            var userTwo = new User { Id =2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered };
-            var userThree = new User { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered };
+            var userOne = new User { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered , Email = "userOne@gmail", Password = "@usEr!1" };
+            var userTwo = new User { Id =2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered, Email = "userTwo@gmail", Password = "@usEr!2" };
+            var userThree = new User { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered, Email = "userThree@gmail", Password = "@usEr!3" };
             context.Users.AddRange(userOne);
             context.Users.AddRange(userTwo);
             context.Users.AddRange(userThree);
@@ -59,12 +59,6 @@ namespace CardFile.TESTS
             context.Materials.AddRange(textTwo);
             context.Materials.AddRange(textThree);
 
-            var profileOne = new UserProfile { Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1" };
-            var profileTwo = new UserProfile { Id = 2, UserId = 2, Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" };
-            var profileThree = new UserProfile { Id = 3, UserId = 3, Email = "userThree@gmail", Login = "User3", Password = "@usEr!3" };
-            context.UserProfiles.AddRange(profileOne);
-            context.UserProfiles.AddRange(profileTwo);
-            context.UserProfiles.AddRange(profileThree);
 
             context.SaveChanges();
         }

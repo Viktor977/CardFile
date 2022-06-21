@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardFile.BAL", "CardFile.BA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardFile.Web", "CardFile.Web\CardFile.Web.csproj", "{66F4B355-1785-4430-9F2F-0D85F86AAF71}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{D21E5126-5DA6-479A-8876-61F4C1533132}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation", "Documentation\Documentation.csproj", "{3E5BA4E5-4148-4B38-9A1F-73EF7CBF6A4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,16 @@ Global
 		{66F4B355-1785-4430-9F2F-0D85F86AAF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66F4B355-1785-4430-9F2F-0D85F86AAF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66F4B355-1785-4430-9F2F-0D85F86AAF71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E5BA4E5-4148-4B38-9A1F-73EF7CBF6A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E5BA4E5-4148-4B38-9A1F-73EF7CBF6A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E5BA4E5-4148-4B38-9A1F-73EF7CBF6A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E5BA4E5-4148-4B38-9A1F-73EF7CBF6A4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E5BA4E5-4148-4B38-9A1F-73EF7CBF6A4B} = {D21E5126-5DA6-479A-8876-61F4C1533132}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D7CE7315-A5CD-407B-9C3F-9B49E64BB12C}

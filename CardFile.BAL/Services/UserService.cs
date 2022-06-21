@@ -32,22 +32,24 @@ namespace CardFile.BAL.Services
             await _uow.SaveAsync();
         }
 
-        public async Task DeleteAsync(int modelId)
-        {
-           await _uow.UserRepositiory.DeleteByIdAsync(modelId);
-            await _uow.SaveAsync();
-        }
+      
 
         public async Task<IEnumerable<UserDto>> GetAllAsync()
         {
             var users = await _uow.UserRepositiory.GetAllAsync();
             return _mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(users);
         }
-        public async Task<bool>CheckUser(UserDto model)
-        {
-            var user = _mapper.Map<UserDto, User>(model);
-            var result = await _uow.UserRepositiory.ChekUser(user);
-            return result;
+        public async Task<UserDto>CheckUser(string email,string password)
+        {        
+            var user = await _uow.UserRepositiory.ChekUser(email,password);
+            if (user is null) return null;
+            if(user is null)
+            {
+                return null;
+            }
+
+            var userDto = _mapper.Map<User, UserDto>(user);
+            return userDto;
         }
 
         public async Task<UserDto> GetByIdAsync(int id)
@@ -55,21 +57,21 @@ namespace CardFile.BAL.Services
             var user = await _uow.UserRepositiory.GetByIdAsync(id);
             return _mapper.Map<User, UserDto>(user);
         }
-        public async Task<UserDto>GetByIdWithDetailsAsync(int id)
-        {
-            var userProfile = await _uow.UserRepositiory.GetByIdWithDetailsAsync(id);
-            var profileDto = _mapper.Map<UserProfile, UserProfileDto>(userProfile.Profile);
-            var res = _mapper.Map<User, UserDto>(userProfile);
-            res.UserProfileDto = profileDto;
-            return res;
+        
 
-        }
-
-        public async Task UpdateAsync(UserDto model)
+        public async Task  UpdateAsync(UserDto model)
         {
             var user = _mapper.Map<UserDto, User>(model);
             _uow.UserRepositiory.Update(user);
             await _uow.SaveAsync();
         }
+
+        public async Task DeleteAsync(UserDto model)
+        {
+            var user = _mapper.Map<UserDto, User>(model);
+            _uow.UserRepositiory.Delete(user);
+            await _uow.SaveAsync();
+        }
+       
     }
 }

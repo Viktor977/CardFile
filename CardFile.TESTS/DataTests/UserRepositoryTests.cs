@@ -60,14 +60,20 @@ namespace CardFile.TESTS.DataTests
         }
 
         [Test]
-        public async Task UserRepository_DeleteByIdAsync_DeletesEntity()
+        public async Task UserRepository_DeleteAsync_DeletesEntity()
         {
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
             var userRepository = new UserRepository(context);
-
+            var user = new User
+            {
+                Id = 1,
+                FirstName = "Benjamin ",
+                LastName = "Franklin",
+                Role = Roles.Admin
+            };
             //Act
-            await userRepository.DeleteByIdAsync(1);
+             userRepository.Delete(user);
             await context.SaveChangesAsync();
 
             //Assert
@@ -103,80 +109,52 @@ namespace CardFile.TESTS.DataTests
             }).Using(new UserEqualityComparer()), message: "Update method works incorrect");
         }
 
-
-        [Test]
-        public async Task UserRepository_GetByIdWithDetailsAsync_ReturnsWithIncludedEntities()
-        {
-            //Arrange
-            using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
-            var userRepository = new UserRepository(context);
-
-            //Act
-            var user = await userRepository.GetByIdWithDetailsAsync(1);
-            var expected = ExpectedUserProfile.FirstOrDefault(x => x.Id == 1);
-
-            //Assert
-           
-
-            Assert.That(user.Profile,
-                Is.EqualTo(ExpectedUserProfile.FirstOrDefault(i => i.Id == expected.Id)).Using(new UserProfileEqualityCompare()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
-
-            Assert.That(user.Profile,
-                Is.EqualTo(ExpectedUserProfile.FirstOrDefault(i => i.UserId == 1)).Using(new UserProfileEqualityCompare()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
-
-            Assert.That(user.Profile,
-               Is.EqualTo(ExpectedUserProfile.FirstOrDefault(i => i.Password == expected.Password)).Using(new UserProfileEqualityCompare()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
-
-            Assert.That(user.Profile,
-               Is.EqualTo(ExpectedUserProfile.FirstOrDefault(i => i.Login == expected.Login)).Using(new UserProfileEqualityCompare()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
-        }
+    
         [Test]
         public async Task UserRepository_ChekUser_ReturnTrue()
         {
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
             var userRepository = new UserRepository(context);
-            var profile = new UserProfile
-            {
-                Id = 1,
-                UserId = 1,
-                Email = "userOne@gmail",
-                Login = "User1",
-                Password = "@usEr!1"
-            };
+               
             var user = new User
             {
                 Id = 1,
                 FirstName = "FNameOne",
                 LastName = "LNameOne",
-                Role = Roles.Registered,
-               Profile=profile
+                Role = Roles.Registered,                 
+                Email = "userOne@gmail",            
+                Password = "@usEr!1"
+
             };
 
             //Act
-            var expected = await userRepository.ChekUser(user);
+            var expected = await userRepository.ChekUser(user.Email,user.Password);
 
             //Assert
-            Assert.IsTrue(expected,message:"Metod Checuser Work incorrect!");
+             Assert.That(user,
+                Is.EqualTo(ExpectedUsers.FirstOrDefault(i => i.Id == expected.Id)).Using(new UserEqualityComparer()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
+
+            Assert.That(user,
+                Is.EqualTo(ExpectedUsers.FirstOrDefault(i => i.LastName == expected.LastName)).Using(new UserEqualityComparer()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
+
+            Assert.That(user,
+               Is.EqualTo(ExpectedUsers.FirstOrDefault(i => i.Password == expected.Password)).Using(new UserEqualityComparer()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
+
+            Assert.That(user,
+               Is.EqualTo(ExpectedUsers.FirstOrDefault(i => i.Email == expected.Email)).Using(new UserEqualityComparer()), message: "GetByIdWithDetailsAsync method doesnt't return included entities");
 
         }
 
         private static IEnumerable<User> ExpectedUsers =>
           new[]
           {
-              new User { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered },
-              new User { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered },
-              new User { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered }
+              new User { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered ,Email = "userOne@gmail", Password = "@usEr!1" },
+              new User { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered , Email = "userTwo@gmail", Password = "@usEr!2"},
+              new User { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered,Email = "userThree@gmail", Password = "@usEr!3" }
 
           };
 
-        private static IEnumerable<UserProfile> ExpectedUserProfile =>
-          new[] {
-
-              new UserProfile { Id = 1, UserId = 1, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1" },
-              new UserProfile { Id = 2, UserId = 2, Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" },
-              new UserProfile { Id = 3, UserId = 3, Email = "userThree@gmail", Login = "User3", Password = "@usEr!3" }
-            
-          };
+        
     }
 }

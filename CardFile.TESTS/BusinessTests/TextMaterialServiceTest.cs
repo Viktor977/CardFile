@@ -67,22 +67,22 @@ namespace CardFile.TESTS.BusinessTests
                 new Reaction { Id = 2, TextId = 1, Assessment = Assessments.Like, UserId = 2, Comment = "cool!" },
                 new Reaction { Id = 3, TextId = 1, Assessment = Assessments.Dislike, UserId = 3, Comment = " " },
             };
-        public List<UserProfileDto> GetTestUserProfiliesDto =>
-        new List<UserProfileDto>()
-        {
-              new UserProfileDto{Id=1,UserId=1,Email="profileOne@gmail",Login="Profil1",Password="1qwerty"},
-              new UserProfileDto{Id=2,UserId=2,Email="profileTwo@gmail",Login="Profil2",Password="2qwerty"},
-              new UserProfileDto{Id=3,UserId=3,Email="profileThree@gmail",Login="Profil3",Password="3qwerty"},
+        //public List<UserProfileDto> GetTestUserProfiliesDto =>
+        //new List<UserProfileDto>()
+        //{
+        //      new UserProfileDto{Id=1,UserId=1,Email="profileOne@gmail",Login="Profil1",Password="1qwerty"},
+        //      new UserProfileDto{Id=2,UserId=2,Email="profileTwo@gmail",Login="Profil2",Password="2qwerty"},
+        //      new UserProfileDto{Id=3,UserId=3,Email="profileThree@gmail",Login="Profil3",Password="3qwerty"},
 
-        };
+        //};
 
-        public List<UserProfile> GetTestUserProfileEntities =>
-          new List<UserProfile>()
-          {
-              new UserProfile{Id=1,UserId=1,Email="profileOne@gmail",Login="Profil1",Password="1qwerty"},
-              new UserProfile{Id=2,UserId=2,Email="profileTwo@gmail",Login="Profil2",Password="2qwerty"},
-              new UserProfile{Id=3,UserId=3,Email="profileThree@gmail",Login="Profil3",Password="3qwerty"},
-          };
+        //public List<UserProfile> GetTestUserProfileEntities =>
+        //  new List<UserProfile>()
+        //  {
+        //      new UserProfile{Id=1,UserId=1,Email="profileOne@gmail",Login="Profil1",Password="1qwerty"},
+        //      new UserProfile{Id=2,UserId=2,Email="profileTwo@gmail",Login="Profil2",Password="2qwerty"},
+        //      new UserProfile{Id=3,UserId=3,Email="profileThree@gmail",Login="Profil3",Password="3qwerty"},
+        //  };
         public List<UserDto> GetTestUserDto =>
           new List<UserDto>()
           {

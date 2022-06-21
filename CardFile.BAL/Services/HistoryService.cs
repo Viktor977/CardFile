@@ -31,9 +31,10 @@ namespace CardFile.BAL.Services
             await _uow.SaveAsync();
         }
 
-        public async Task DeleteAsync(int modelId)
+        public async Task DeleteAsync(HistoryDto model)
         {
-            await _uow.HistoryRepository.DeleteByIdAsync(modelId);
+            var history = _mapper.Map<HistoryDto, History>(model);
+            _uow.HistoryRepository.Delete(history);
             await _uow.SaveAsync();
         }
 

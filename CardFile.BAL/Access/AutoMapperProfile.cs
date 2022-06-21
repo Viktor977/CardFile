@@ -9,8 +9,7 @@ namespace CardFile.BAL.Access
         {
             var configuration = new MapperConfiguration(config =>
               {
-                  config.AddProfile<UserMapper>();
-                  config.AddProfile<UserProfileMapper>();
+                  config.AddProfile<UserMapper>();            
                   config.AddProfile<HistoryMapper>();
                   config.AddProfile<TextMaterialMapper>();
                   config.AddProfile<ReactionMapper>();

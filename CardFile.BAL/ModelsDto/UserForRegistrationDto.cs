@@ -1,17 +1,18 @@
 ﻿using CardFile.DAL.Enums;
+using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace CardFile.DAL.Entities
+namespace CardFile.BAL.ModelsDto
 {
-    public class User : BaseEntity
+    public class UserForRegistrationDto
     {
+         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public Roles Role { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public Roles Role { get; set; }
-      
-        public virtual ICollection<History> Materials { get; set; }
-
+        public string Login { get; set; }
     }
 }
