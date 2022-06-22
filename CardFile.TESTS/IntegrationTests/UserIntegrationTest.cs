@@ -47,9 +47,9 @@ namespace CardFile.TESTS.IntegrationTests
         private static readonly IEnumerable<UserDto> ExpectedCustomerModels =
            new List<UserDto>()
            {
-                 new UserDto { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered },
-                 new UserDto { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered },
-                 new UserDto { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered },
+                 new UserDto { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered , Email = "userOne@gmail", Password = "@usEr!1" },
+                 new UserDto { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered, Email = "userTwo@gmail", Password = "@usEr!2" },
+                 new UserDto { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered, Email = "userThree@gmail", Password = "@usEr!3" },
            };
 
         [TearDown]

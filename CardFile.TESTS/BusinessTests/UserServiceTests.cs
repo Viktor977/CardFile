@@ -61,19 +61,13 @@ namespace CardFile.TESTS.BusinessTests
         public async Task UserService_CheckUser_ReturnFalse()
         {
             //arrange
-            var expected = GetEntityExpected.FirstOrDefault(x => x.Id == 1);
+            var expected = GetEntityExpected.FirstOrDefault(x => x.Email== "userOne@gmail" && x.Password == "@usEr!1");
             var mockUnitOfWork = new Mock<IUnitOfWork>();
 
-
-
-
-            //mockUnitOfWork
-            //    .Setup(m => m.UserRepositiory.ChekUser();
-
-
+            mockUnitOfWork
+                .Setup(m => m.UserRepositiory.ChekUser("userOne@gmail", "@usEr!1")).ReturnsAsync(GetEntity.First());
 
             var userService = new UserService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
-
 
             var userDto = new UserDto
             {
@@ -91,7 +85,7 @@ namespace CardFile.TESTS.BusinessTests
             var actual = await userService.CheckUser(userDto.Email, userDto.Password);
 
             // Assert
-            
+            actual.Should().BeEquivalentTo(expected);
 
         }
 
@@ -99,9 +93,9 @@ namespace CardFile.TESTS.BusinessTests
         public List<UserDto> GetTestUserDto =>
            new List<UserDto>()
            {
-                 new UserDto { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered, Email = "userOne@gmail", Login = "User1", Password = "@usEr!1"},
-                 new UserDto { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered ,Email = "userTwo@gmail", Login = "User2", Password = "@usEr!2" },
-                 new UserDto { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered ,Email = "userThree@gmail", Login = "User3", Password = "@usEr!3"}
+                 new UserDto { Id = 1, FirstName = "FNameOne", LastName = "LNameOne", Role = Roles.Registered, Email = "userOne@gmail", Password = "@usEr!1"},
+                 new UserDto { Id = 2, FirstName = "FNameTwo", LastName = "LNameTwo", Role = Roles.Registered ,Email = "userTwo@gmail", Password = "@usEr!2" },
+                 new UserDto { Id = 3, FirstName = "FNameThree", LastName = "LNameThree", Role = Roles.Registered ,Email = "userThree@gmail", Password = "@usEr!3"}
 
            };
 
@@ -122,7 +116,7 @@ namespace CardFile.TESTS.BusinessTests
                LastName = "LNameOne",
                Role = Roles.Registered,
                Email = "userOne@gmail",
-                 Login = "User1",
+                
                    Password = "@usEr!1"
                },
 
@@ -132,7 +126,7 @@ namespace CardFile.TESTS.BusinessTests
                      LastName = "LNameTwo",
                      Role = Roles.Admin ,
                      Email = "userTwo@gmail",
-                     Login = "User2", 
+                    
                      Password = "@usEr!2" 
 
                  },

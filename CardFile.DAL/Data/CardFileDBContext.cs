@@ -21,12 +21,12 @@ namespace CardFile.DAL.Data
             modelBuilder.ApplyConfiguration(new ReactionConfiguration());
         }
 
-        public CardFileDBContext() { }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
+        //public CardFileDBContext() { }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
 
-            optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=CardFileDB;User ID=user1;Password=AZSXDCFVGBHNJMK<L>:?;");
+        //    optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=CardFileDB;User ID=user1;Password=AZSXDCFVGBHNJMK<L>:?;");
 
-        }
+        //}
     }
 }

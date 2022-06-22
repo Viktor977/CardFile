@@ -45,7 +45,11 @@ namespace CardFile.DAL.Repositories
 
         public async  Task<History> GetByIdAsync(int id)
         {
-            return await _context.Histories.FindAsync(id);
+            return await _context.Histories.
+
+                Include(t => t.Material)
+                .ThenInclude(t => t.Reactions)
+                .SingleAsync(t => t.TextId == id);
         }
 
 
