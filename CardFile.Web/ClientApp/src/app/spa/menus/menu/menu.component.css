@@ -16,6 +16,7 @@ li {
 }
 
 :host(.vertical-menu) {
+  
     display: inline-block;
     max-width: 160px;
     min-width: 160px;

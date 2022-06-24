@@ -1,8 +1,10 @@
-
-<!--
-<app-menu *ngIf="menuService.isVertical && screenService.isLarge()||menuService.showVerticalMenu && !screenService.isLarge()" class='vertical-menu'></app-menu>
-
-<div class='body-style'>
- 
-</div>-->
- <router-outlet></router-outlet>
+<app-menu
+  *ngIf="
+    (menuService.isVertical && screenService.isLarge()) ||
+    (menuService.showVerticalMenu && !screenService.isLarge())
+  "
+  class="vertical-menu"
+></app-menu>
+<div class="body-style">
+  <router-outlet></router-outlet>
+</div>

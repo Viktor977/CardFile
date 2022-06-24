@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    height: 100vh;
+    background-image: url('../../../assets/cardfiles.jpg');
+}
+
+.greetings-body {
+    color: blue;
+    justify-content: center;
+    flex-grow: 1;
+
+}

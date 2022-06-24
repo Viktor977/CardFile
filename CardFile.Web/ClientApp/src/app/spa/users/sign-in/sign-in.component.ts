@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-import { UserService } from "../../services/user.service";
+import { AuthUserService } from "src/app/appservices/authuser.service";
 import { UserApi } from "../user-api";
 
 @Component({
@@ -15,7 +14,7 @@ export class SignInComponent implements OnInit {
   formError: string;
   constructor(
     private userApi: UserApi,
-    private userService: UserService,
+    private userService: AuthUserService,
     private router: Router
   ) {}
 
@@ -28,7 +27,7 @@ export class SignInComponent implements OnInit {
         .subscribe(
           (data) => {
             console.log(data);
-            this.router.navigate(["/auth"]);
+            this.router.navigate(["/auth/home"]);
           },
 
           (error) => {

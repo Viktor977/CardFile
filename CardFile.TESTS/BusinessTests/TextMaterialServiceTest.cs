@@ -35,7 +35,46 @@ namespace CardFile.TESTS.BusinessTests
             //Assert
             actual.Should().BeEquivalentTo(expected);
         }
+        [Test]
+        public async Task  TextMaterialService_UpDate_ReturnTrue()
+        {
+            //Arrange
+            var expected = new TextMaterialDto
+            {
+                Id = 1,
+                Allows = Allows.Allowed,
+                DatePublish = new DateTime(2020, 12, 21),
+                Author = "Doe A.",
+                Title = "Test1",
+                Article = "some text1 and added new text",
+               
+            };
+            var entity = new TextMaterial {
+                Id = 1,
+                Allows = Allows.Allowed,
+                DatePublish = new DateTime(2020, 12, 21),
+                Author = "Doe A.", Title = "Test1",
+                Article = "some text1 and added new text",
+              
+            };
+            var mockUnitOfWork = new Mock<IUnitOfWork>();
 
+            mockUnitOfWork
+                .Setup(x => x.TextMaterialRepository.Update(entity));
+                
+
+            var textMaterialService = new TextMaterialService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
+
+            //Act
+            await textMaterialService.UpdateAsync(expected);
+           
+            var actual = await textMaterialService.GetByIdAsync(1);
+
+            //Assert
+            actual.Should().BeEquivalentTo(expected);
+            //TODO
+
+        }
 
         #region TestData
         public List<TextMaterialDto> GetTestTextMaterialDto =>

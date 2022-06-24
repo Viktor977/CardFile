@@ -20,6 +20,10 @@ import { CardService } from "./services/card.service";
 import { HomeComponent } from "../routes/home/home.component";
 import { UserComponent } from "../routes/user/user.component";
 import { AdminComponent } from "../routes/admin/admin.component";
+import{SignInComponent} from '../spa/users/sign-in/sign-in.component'
+import { RegistrationComponent } from "./users/registration/registration.component";
+import { GreetingsComponent } from './greetings/greetings.component';
+import { AuthUserService } from "../appservices/authuser.service";
 
 @NgModule({
   declarations: [
@@ -32,13 +36,16 @@ import { AdminComponent } from "../routes/admin/admin.component";
     IconBarComponent,
     ScreenLargeDirective,
     ScreenSmallDirective,
+    SignInComponent,
+    RegistrationComponent,
     CardComponent,
     HomeComponent,
     UserComponent,
     AdminComponent,
+    GreetingsComponent,  
   ],
   imports: [FormsModule, RouterModule, CommonModule],
-  providers: [SpaConfigService, MenuService, ScreenService, CardService],
+  providers: [SpaConfigService, MenuService, ScreenService, CardService,AuthUserService],
   exports: [BodyComponent],
 })
 export class SpaModule {}

@@ -1,6 +1,8 @@
 :host {
     min-height: 30px;
     background-color: #13292a;
+     display: flex;
+    justify-content: center;
 }
 
 div {

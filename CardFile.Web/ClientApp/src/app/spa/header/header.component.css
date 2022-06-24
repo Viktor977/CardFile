@@ -1,5 +1,5 @@
 :host {
-    background-color: #B9ECEF;
+    
 }
 
 .title-bar {
@@ -7,6 +7,7 @@
     display: flex;
     min-height: 120px;
     padding: 10px 0;
+    background-color: #B9ECEF;
 }
 
 .title-bar img {
