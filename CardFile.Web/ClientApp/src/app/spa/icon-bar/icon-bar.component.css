@@ -1,4 +1,3 @@
-
 :host {
     /* height: 60px; */
     text-align: right;
@@ -40,12 +39,10 @@ span {
     text-align: center;
 }
 
-    .forSmall span {
-        margin: 0;
-    }
+.forSmall span {
+    margin: 0;
+}
 
-    .forSmall button {
-        padding: 5px 3px
-
-    }
-
+.forSmall button {
+    padding: 5px 3px
+}

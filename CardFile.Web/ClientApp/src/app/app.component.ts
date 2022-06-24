@@ -17,13 +17,10 @@ export class AppComponent {
                 { imageFile: '../assets/instagram.png', alt: 'Instargram', url: 'http://www.instagram.com' },
                 { imageFile: '../assets/twitter.png', alt: 'Twitter', url: 'http://twitter.com' },
                 { imageFile: '../assets/whatsapp.png', alt: 'WhatsApp', url: 'http://www.whatsapp.com' },
-
             ],
             showUserControls: true
         };
         spaConfigService.configure(config);
         menuService.items = AppMenuItems;
     }
-
-
 }

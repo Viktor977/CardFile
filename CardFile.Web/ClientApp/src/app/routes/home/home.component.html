@@ -1,28 +1,16 @@
 
-<p *ngIf="!cards"><em>LOAD....</em></p>
-<h3>Search by Title</h3>
-<input type="text" placeholder="input card title" [(ngModel)]="searchTitle">
-<button (click)="search()">Search</button>
+<div>
+    <div class="head">
 
-<table class='table table-striped' aria-labelledby="tableLabell" *ngIf="cards">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Author</th>
-            <th>Date Public</th>
-            <th>Title</th>
-            <th>Text</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <tr *ngFor="let card of cards">
-            <td>{{card.id}}</td>
-            <td>{{card.author}}</td>
-            <td>{{card.DatePublish | date:'short'}}</td>
-            <td>{{card.title}}</td>
-            <td>{{card.article}}</td>
-        </tr>
-
-    </tbody>
-</table>
+     <h3>Search by Title</h3>
+     <h3>Home Work</h3>
+     
+    <!--<input  type="text" placeholder="input title" [(ngModel)]="searchtitle" >--> 
+     <button (click)="search()">Search</button>
+   </div>
+  
+     <app-card *ngFor="let iterCard of cards" [card]="iterCard">
+  
+     </app-card>
+   </div>
+  

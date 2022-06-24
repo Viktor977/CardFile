@@ -1,27 +1,21 @@
-import { Injectable } from '@angular/core';
-import { MenuItems } from '../interfaces/menuitems';
+import { Injectable } from "@angular/core";
+import { MenuItems } from "../interfaces/menuitems";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class MenuService {
+  constructor() {}
+  items: Array<MenuItems>;
+  isVertical = false;
+  showVerticalMenu = false;
 
-    constructor() { }
-    items: Array<MenuItems>;
-    isVertical = false;
-    showVerticalMenu = false;
+  toggleMenu(): void {
+    this.isVertical = true;
+    this.showVerticalMenu = !this.showVerticalMenu;
+  }
 
-    toggleMenu(): void {
-        this.isVertical = true;
-        this.showVerticalMenu = !this.showVerticalMenu;
-    }
-
-    toggleOrientation(): void {
-        this.isVertical = !this.isVertical;
-    }
+  toggleOrientation(): void {
+    this.isVertical = !this.isVertical;
+  }
 }
-
-
-
-
-

@@ -42,6 +42,7 @@ namespace CardFile.Web.Controllers
             return Ok(text);
 
         }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<TextMaterialDto>> GetById(int id)
         {
@@ -52,12 +53,15 @@ namespace CardFile.Web.Controllers
             }
             return Ok(textMaterial);
         }
+
         [HttpPost]
         public async Task<ActionResult>Add([FromBody]TextMaterialDto text)
         {
             await _service.AddAsync(text);
             return Ok();
         }
+
+
         [HttpPut]
         public async Task<ActionResult>AddUserReaction([FromBody]TextMaterialDto text)
         {

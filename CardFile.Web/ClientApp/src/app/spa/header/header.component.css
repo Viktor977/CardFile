@@ -9,9 +9,9 @@
     padding: 10px 0;
 }
 
-    .title-bar img {
-        height: 120px;
-    }
+.title-bar img {
+    height: 120px;
+}
 
 .menu-area {
     display: flex;
@@ -32,13 +32,13 @@
     align-items: center;
 }
 
-    .small-icon-holder a {
-        border: 2px solid #bcbcbc;
-        border-radius: 20%;
-        opacity: 0.5;
-        margin: 0 10px;
-        cursor: pointer;
-    }
+.small-icon-holder a {
+    border: 2px solid #bcbcbc;
+    border-radius: 20%;
+    opacity: 0.5;
+    margin: 0 10px;
+    cursor: pointer;
+}
 
 .small-image-holder {
     flex-grow: 1;
@@ -50,4 +50,3 @@
     height: 100px;
 
 }
-

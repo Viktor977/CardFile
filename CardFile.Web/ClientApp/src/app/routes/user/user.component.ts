@@ -1,51 +1,43 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Card } from '../../spa/interfaces/card';
-import { CardService } from '../../spa/services/card.service';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Card } from "../../spa/interfaces/card";
+import { CardService } from "../../spa/services/card.service";
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: "app-user",
+  templateUrl: "./user.component.html",
+  styleUrls: ["./user.component.css"],
 })
 export class UserComponent implements OnInit {
-    searchTitle: string
-    id: number;
-    selectedCard: Card;
-    cards: Card[];
-    private _cards: Card[];
+  private _cards!: Card[];
+  card!: Card;
+  @Output()
+  onLikePost = new EventEmitter<Card>();
+  @Input()
+  cards: Card[];
+  searchtitle = "";
+  constructor(private cardService: CardService) {}
 
-    @Input() card!: Card;
-
-    @Output()
-    onLikePost = new EventEmitter<Card>();
-
-    constructor(private cardService: CardService) { }
-
-    ngOnInit() {
-        this.cardService.getText().subscribe(
-            ((cards: Card[]) => { this.cards = cards }), ((e: any) => { console.log(e) }));
-    }
- 
-    selct(card: Card) {
-        this.selectedCard = card;
-    }
-
-    search() {
-        if (this.searchTitle.length === 0) {
-            this.cards = this._cards;
-            return;
-        }
-        this._cards = this.cards;
-        this.cards = this.cards.filter(card => card.title.startsWith(this.searchTitle));
+  ngOnInit(): void {
+    this.cardService.getCards().subscribe((cards: Card[]) => {
+      this.cards = cards;
+    }),
+      (e: any) => {
+        console.log(e);
+      };
+  }
+  search() {
+    if (this.searchtitle && this.searchtitle.length === 0) {
+      this.cards = this._cards;
+      return;
     }
 
-    handleLikedText(event:Event,id:number) {
-      this.id=id;
-        this.cardService.like(this.id);
-      
-    }
-
-    onLike() {
-        
-    }
+    this._cards = this.cards;
+    this.cards = this.cards.filter((card) =>
+      card.title.startsWith(this.searchtitle)
+    );
+  }
+  handleLikedText(event: Event, id: number) {
+    this.card.id = id;
+    this.cardService.like(this.card.id);
+  }
 }
