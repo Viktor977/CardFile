@@ -1,12 +1,8 @@
 ﻿using CardFile.BAL.Interfaces;
 using CardFile.BAL.ModelsDto;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-
-
 
 namespace CardFile.Web.Controllers
 {
@@ -57,9 +53,25 @@ namespace CardFile.Web.Controllers
         [HttpPost]
         public async Task<ActionResult>Add([FromBody]TextMaterialDto text)
         {
+            if(text is null)
+            {
+                return BadRequest();
+            }
+
             await _service.AddAsync(text);
             return Ok();
         }
 
+        [HttpDelete]
+        public async Task<ActionResult> Delete([FromBody]TextMaterialDto text)
+        {
+            if(text is null)
+            {
+                return BadRequest();
+            }
+
+            await _service.DeleteAsync(text);
+            return Ok();
+        }
     }
 }

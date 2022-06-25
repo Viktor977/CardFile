@@ -108,9 +108,9 @@ namespace CardFile.TESTS.BusinessTests
        public List<ReactionDto> ReactionDtoEntity =>
        new List<ReactionDto>()
        {
-             new ReactionDto { Id = 1, Assessment = Assessments.Like, UserId = 1, Comment = "amazing!!!" },
-             new ReactionDto { Id = 2, Assessment = Assessments.Like, UserId = 2, Comment = "cool!" },
-             new ReactionDto { Id = 3,  Assessment = Assessments.Dislike, UserId = 3, Comment = " " }
+             new ReactionDto { Id = 1,TextId=1, Assessment = Assessments.Like, UserId = 1, Comment = "amazing!!!" },
+             new ReactionDto { Id = 2,TextId=1, Assessment = Assessments.Like, UserId = 2, Comment = "cool!" },
+             new ReactionDto { Id = 3,TextId=1,  Assessment = Assessments.Dislike, UserId = 3, Comment = " " }
        };
 
     }

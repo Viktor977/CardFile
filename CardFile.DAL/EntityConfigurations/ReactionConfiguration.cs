@@ -13,6 +13,7 @@ namespace CardFile.DAL.EntityConfigurations
             builder.Property(t => t.Comment).HasMaxLength(300);
             builder.Property(t => t.Assessment)
                 .HasConversion(x => x.ToString(), x => (Assessments)Enum.Parse(typeof(Assessments), x));
+            builder.HasOne(t => t.Text).WithMany(t => t.Reactions).HasForeignKey(t => t.TextId);
         }
     }
 }

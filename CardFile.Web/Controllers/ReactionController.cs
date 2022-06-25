@@ -1,10 +1,7 @@
 ﻿using CardFile.BAL.Interfaces;
-using CardFile.BAL.Services;
-using Microsoft.AspNetCore.Http;
+using CardFile.BAL.ModelsDto;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CardFile.Web.Controllers
@@ -14,13 +11,65 @@ namespace CardFile.Web.Controllers
     public class ReactionController : ControllerBase
     {
         private readonly IReactionService _service;
-        
+
         public ReactionController(IReactionService service)
         {
             _service = service;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ReactionDto>>> GetAll()
+        {
+            var reactins = await _service.GetAllAsync();
+            return Ok(reactins);
+        }
 
-    }
-    
+        [HttpGet("{id}")]
+        public async Task<ActionResult>GetById(int id)
+        {
+            var reaction = await _service.GetByIdAsync(id);
+            if(reaction is null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(reaction);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Add([FromBody] ReactionDto reaction)
+        {
+            if (reaction.TextId == 0)
+            {
+                return BadRequest();
+            }
+
+            await _service.AddAsync(reaction);
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult>Update([FromBody] ReactionDto reaction)
+        {
+            if (reaction.TextId == 0)
+            {
+                return BadRequest();
+            }
+
+            await _service.UpdateAsync(reaction);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult>Delete([FromBody] ReactionDto reaction)
+        {
+            if(reaction is null)
+            {
+                return BadRequest();
+            }
+
+            await _service.DeleteAsync(reaction);
+            return Ok();
+        }
+    }   
 }

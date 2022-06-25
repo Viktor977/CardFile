@@ -22,9 +22,7 @@ namespace CardFile.DAL.EntityConfigurations
                 .HasForeignKey(t => t.TextId)
                 .IsRequired();
 
-            builder.HasMany(t => t.Reactions)
-                .WithOne(t => t.Text)
-                .HasForeignKey(t => t.TextId).HasPrincipalKey(t=>t.Id);
+           
         }
     }
 }

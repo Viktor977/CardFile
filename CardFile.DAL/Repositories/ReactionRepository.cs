@@ -18,8 +18,8 @@ namespace CardFile.DAL.Repositories
         }
         public async Task AddAsync(Reaction entity)
         {
-            await _context.Reactions.AddRangeAsync(entity);
-            await _context.SaveChangesAsync();
+            await _context.Reactions.AddAsync(entity);
+          //  await _context.SaveChangesAsync();
         }
 
         public  void Delete(Reaction entity)

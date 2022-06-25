@@ -25,7 +25,6 @@ namespace CardFile.TESTS.IntegrationTests
             _client = _factory.CreateClient();
         }
 
-
         [Test]
         public async Task UserController_GetAllUsers_ReturnsAllFromDb()
         {

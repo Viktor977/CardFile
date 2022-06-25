@@ -99,7 +99,8 @@ namespace CardFile.TESTS
             return x.Id == y.Id
                 && x.TextId == y.TextId
                 && x.Assessment == y.Assessment
-                && x.Comment == y.Comment;                
+                && x.Comment == y.Comment
+                && x.UserId == y.UserId;
         }
 
         public int GetHashCode([DisallowNull] Reaction obj)

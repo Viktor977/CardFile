@@ -1,15 +1,11 @@
-﻿using CardFile.BAL.Access;
-using CardFile.BAL.Interfaces;
+﻿using CardFile.BAL.Interfaces;
 using CardFile.BAL.ModelsDto;
-using CardFile.DAL.Entities;
 using CardFile.Web.Helpers;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -42,13 +38,13 @@ namespace CardFile.Web.Controllers
                 SecurityAlgorithms.HmacSha256)
                 );
 
-
             var responce = await _service.CheckUser(model.Email, model.Password);
 
             responce.Token = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             return Ok(responce);
         }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] UserForRegistrationDto model)
@@ -60,14 +56,15 @@ namespace CardFile.Web.Controllers
             }
             var userNew = new UserDto()
             {
-              FirstName=model.FirstName,
-              LastName=model.LastName,
-              Role=DAL.Enums.Roles.Registered,
-              Email=model.Email,
-              Login=model.Login,
-              Password=model.Password
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Role = DAL.Enums.Roles.Registered,
+                Email = model.Email,
+                Login = model.Login,
+                Password = model.Password
             };
-             await  _service.AddAsync(userNew );
+
+            await _service.AddAsync(userNew);
 
             return Ok(userNew);
         }
@@ -86,6 +83,7 @@ namespace CardFile.Web.Controllers
             {
                 return BadRequest();
             }
+
             await _service.DeleteAsync(user);
             return Ok();
         }
@@ -97,16 +95,12 @@ namespace CardFile.Web.Controllers
             {
                 return null;
             }
-           
-
-
-
 
             var claims = new List<Claim>();
-           var claimsEmail = new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email);
+            var claimsEmail = new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email);
             var claimsPass = new Claim(ClaimsIdentity.DefaultNameClaimType, user.Password);
             var cllimsRole = new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString());
-           claims.Add(claimsEmail);
+            claims.Add(claimsEmail);
             claims.Add(claimsPass);
             claims.Add(cllimsRole);
 
