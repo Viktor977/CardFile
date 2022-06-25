@@ -6,6 +6,6 @@ namespace CardFile.BAL.Interfaces
     public interface ITextMaterialService : ICrud<TextMaterialDto>
     {      
         public Task<TextMaterialDto>SearchByFilter(FilterSearchDto filter);
-        public Task AddUserReaction(ReactionDto model);
+     
     }
 }

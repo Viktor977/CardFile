@@ -5,20 +5,17 @@ export const AppMenuItems: Array<MenuItems> = [
     {
         text: 'Home',
         icon: '../assets/home.png',
-        route: '/auth/home',
-        submenu: null
+        route: '/auth/home',      
     },
     {
         text: ' Users',
         icon: '../assets/users.svg',
-        route: '/auth/user',
-        submenu: null
+        route: '/auth/user',      
     },
     {
         text: 'Admin',
         icon: '../assets/admin.svg',
-        route: '/auth/admin',
-        submenu: null
+        route: '/auth/admin',      
     },
 
 ]

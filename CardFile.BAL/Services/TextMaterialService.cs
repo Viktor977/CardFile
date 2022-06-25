@@ -69,21 +69,12 @@ namespace CardFile.BAL.Services
             }
 
             return null;
-
         }
 
         public async Task UpdateAsync(TextMaterialDto model)
         {
             var text = _mapper.Map<TextMaterialDto, TextMaterial>(model);
             _uow.TextMaterialRepository.Update(text);
-            await _uow.SaveAsync();
-
-        }
-
-        public async Task AddUserReaction(ReactionDto model)
-        {
-            var reaction = _mapper.Map<ReactionDto, Reaction>(model);
-            await _uow.ReactionRepository.AddAsync(reaction);
             await _uow.SaveAsync();
         }
 

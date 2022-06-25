@@ -61,16 +61,5 @@ namespace CardFile.Web.Controllers
             return Ok();
         }
 
-
-        [HttpPut]
-        public async Task<ActionResult>AddUserReaction([FromBody]TextMaterialDto text)
-        {
-            await _service.UpdateAsync(text);
-            return Ok();
-        }
-
-      
-
-
     }
 }

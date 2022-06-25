@@ -35,8 +35,28 @@ namespace CardFile.TESTS.BusinessTests
             //Assert
             actual.Should().BeEquivalentTo(expected);
         }
+
         [Test]
-        public async Task  TextMaterialService_UpDate_ReturnTrue()
+        public async Task TextMaterialService_AddAsync_ReturEntity()
+        {
+            //Arrange
+            var mockUnitOfWork = new Mock<IUnitOfWork>();
+            mockUnitOfWork.Setup(m => m.TextMaterialRepository.AddAsync(It.IsAny<TextMaterial>()));
+
+            var textMaterialService = new TextMaterialService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
+            var text = GetTestTextMaterialDto.First();
+
+            //Act
+            await textMaterialService.AddAsync(text);
+
+            //Assert
+            mockUnitOfWork.Verify(x => x.TextMaterialRepository.AddAsync(It.Is<TextMaterial>(c => c.Id == text.Id)), Times.Once);
+            mockUnitOfWork.Verify(x => x.SaveAsync(), Times.Once);
+
+        }
+
+        [Test]
+        public async Task  TextMaterialService_UpDate_ReturnTextUpdated()
         {
             //Arrange
             var expected = new TextMaterialDto
@@ -47,32 +67,68 @@ namespace CardFile.TESTS.BusinessTests
                 Author = "Doe A.",
                 Title = "Test1",
                 Article = "some text1 and added new text",
-               
             };
-            var entity = new TextMaterial {
-                Id = 1,
-                Allows = Allows.Allowed,
-                DatePublish = new DateTime(2020, 12, 21),
-                Author = "Doe A.", Title = "Test1",
-                Article = "some text1 and added new text",
               
-            };
+            var text = GetTestTextMaterialEntities.First();
             var mockUnitOfWork = new Mock<IUnitOfWork>();
 
             mockUnitOfWork
-                .Setup(x => x.TextMaterialRepository.Update(entity));
+                .Setup(x => x.TextMaterialRepository.Update(text));
                 
-
             var textMaterialService = new TextMaterialService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
 
             //Act
             await textMaterialService.UpdateAsync(expected);
-           
-            var actual = await textMaterialService.GetByIdAsync(1);
+               
+            //Assert
+                mockUnitOfWork.Verify(x => x.TextMaterialRepository.Update(It.Is<TextMaterial>(x=> x.Id == text.Id)), Times.Once);
+                mockUnitOfWork.Verify(x => x.SaveAsync(), Times.Once);
+            
+        }
+
+        [TestCase("Test1")]
+        [TestCase("Test2")]
+        public async Task TextMaterialService_SearchByFilter(string searchTitle)
+        {
+            //Arrange
+            var seacher = new FilterSearchDto();
+            seacher.TitleText = searchTitle;
+            var expected = GetTestTextMaterialDto.FirstOrDefault(t => t.Title == searchTitle);
+            var mockUnitOfWork = new Mock<IUnitOfWork>();
+
+            mockUnitOfWork
+                .Setup(x => x.TextMaterialRepository.GetByTitleWithDetailsAsync(seacher.TitleText))
+                .ReturnsAsync(GetTestTextMaterialEntities.FirstOrDefault(t=>t.Title==seacher.TitleText));
+
+            var textMaterialService = new TextMaterialService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
+
+            //Act
+            var actual = await textMaterialService.SearchByFilter(seacher);
+
+            ///Assert
+            actual.Should().BeEquivalentTo(expected);
+
+        }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        public async Task TextMaterialService_GetByIdAsync_RteurnEntity(int id)
+        {
+            
+            //Arrange
+            var mockUnitOfWork = new Mock<IUnitOfWork>();
+            mockUnitOfWork.Setup(m => m.TextMaterialRepository.GetByIdAsync(id))
+                .ReturnsAsync(GetTestTextMaterialEntities.FirstOrDefault(t=>t.Id==id));
+
+            var textMaterialService = new TextMaterialService(mockUnitOfWork.Object, UnitTestsHelper.CreateMapperProfile());
+            var expected = GetTestTextMaterialDto.FirstOrDefault(t => t.Id == id);
+
+            //Act
+            var actual=await textMaterialService.GetByIdAsync(id);
 
             //Assert
             actual.Should().BeEquivalentTo(expected);
-            //TODO
 
         }
 

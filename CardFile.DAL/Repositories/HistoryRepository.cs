@@ -18,23 +18,18 @@ namespace CardFile.DAL.Repositories
             _context = context;
         }
         public async Task AddAsync(History entity)
-        {
-          
+        {         
             await _context.Histories.AddRangeAsync(entity);
             await _context.SaveChangesAsync();
 
         }
 
-        public  async void Delete(History entity)
+        public  void Delete(History entity)
         {
-            _context.Histories.RemoveRange(entity);
-           await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteByIdAsync(int id)
-        {
-          var history=  await _context.Histories.FindAsync(id);
-            _context.Histories.Remove(history);
+            var history = _context.Histories.Find(entity.Id);
+            _context.Histories.RemoveRange(history);
+            _context.SaveChanges();
+        
         }
 
         public async Task<IEnumerable<History>> GetAllAsync()
@@ -42,23 +37,18 @@ namespace CardFile.DAL.Repositories
             return await _context.Histories.ToListAsync();
         }
    
-
         public async  Task<History> GetByIdAsync(int id)
         {
             return await _context.Histories.
-
                 Include(t => t.Material)
                 .ThenInclude(t => t.Reactions)
                 .SingleAsync(t => t.TextId == id);
         }
 
-
-        public async void Update(History entity)
+        public void Update(History entity)
         {
             _context.Histories.Update(entity);
-            await _context.SaveChangesAsync();
-
-        }
-    
+           
+        }   
     }
 }

@@ -19,10 +19,10 @@ namespace CardFile.TESTS.DataTests
             //Arrange
             using var context = new CardFileDBContext(UnitTestsHelper.GetUnitTestDbOptions());
             var historyRepository = new HistoryRepository(context);
-            var customer = new History { Id = 4 };
+            var history = new History { Id = 4 ,ReaderId=2};
 
             // Act
-            await historyRepository.AddAsync(customer);
+            await historyRepository.AddAsync(history);
             await context.SaveChangesAsync();
 
             //Assert

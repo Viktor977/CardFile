@@ -20,7 +20,7 @@ export const appRouters: Routes = [
         path: "",
         canActivateChild: [AuthGuard],
         children: [
-          { path: "home", component: HomeComponent },
+          {path:'home',component:HomeComponent},
           { path: "user", component: UserComponent },
           { path: "admin", component: AdminComponent},
         ],

@@ -80,23 +80,7 @@ namespace CardFile.TESTS.DataTests
                 Assert.AreEqual(expected, actual.DatePublish);
             }
         }
-        [Test]
-        public async Task TextMaterialRepository_DeleteByIdAsync_DeletesEntity()
-        {
-           
-            using (var context = new CardFileDBContext(_options))
-            {
-               //Arrange
-                var textRepository = new TextMaterialRepository(context);
-
-                //Act
-                await textRepository.DeleteByIdAsync(1);
-                await context.SaveChangesAsync();
-
-                //Assert
-                Assert.That(context.Materials.Count(), Is.EqualTo(2), message: "DeleteByIdAsync works incorrect");
-            }
-        }
+      
 
         [Test]
         public async Task TextMaterialRepository_Delete_DelitesEntity()

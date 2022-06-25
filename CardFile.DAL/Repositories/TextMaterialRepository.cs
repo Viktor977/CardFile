@@ -23,18 +23,11 @@ namespace CardFile.DAL.Repositories
            
         }
 
-        public async void Delete(TextMaterial entity)
+        public  void Delete(TextMaterial entity)
         {
-            _context.Materials.RemoveRange(entity);
-            await _context.SaveChangesAsync();
-
-        }
-
-        public async Task DeleteByIdAsync(int id)
-        {
-            var material = await _context.Materials.FindAsync(id);
-            _context.Materials.Remove(material);
-            await _context.SaveChangesAsync();
+            var text = _context.Materials.Find(entity.Id);
+            _context.Materials.RemoveRange(text);
+            _context.SaveChanges();
         }
 
         public async Task<IEnumerable<TextMaterial>> GetAllAsync()
@@ -71,10 +64,10 @@ namespace CardFile.DAL.Repositories
             return text;
         }
 
-        public async  void Update(TextMaterial entity)
+        public  void Update(TextMaterial entity)
         {
             _context.Materials.Update(entity);
-            await _context.SaveChangesAsync();
+           
         }
     }
 }

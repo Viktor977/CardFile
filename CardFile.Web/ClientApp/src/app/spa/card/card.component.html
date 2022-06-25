@@ -1,39 +1,14 @@
 
-<div *ngIf="user as user">
-<div [*ngSwitch]="user.role">
-  <div *ngSwitchCase="Role.guest">
-    <!--
+
+
+  <div>
+    
     <p>{{ card.id }}</p>
     <h3>{{ card.title }}</h3>
     <p>{{ card.author }}</p>
     <p>{{ card.datePublish }}</p>
     <p>{{ card.article }}</p>
-   -->
+   <button (click)="handleLikedText($event, card.id)">Like Me!</button>
    <h4>Role Guest</h4>
   </div>
-  <div *ngSwitchDefault="Role.regestered">
-    <!--
-    <p>{{ card.id }}</p>
-    <h3>{{ card.title }}</h3>
-    <p>{{ card.author }}</p>
-    <p>{{ card.datePublish }}</p>
-    <p>{{ card.article }}</p>
-  -->
-    <P>case user</P>
-  </div>
-  <div *ngSwitchCase='Role.admin'>
-    <!--
-    <p>{{ card.id }}</p>
-    <h3>{{ card.title }}</h3>
-    <p>{{ card.author }}</p>
-    <p>{{ card.datePublish }}</p>
-    <p>{{ card.article }}</p> 
-     <button (click)="handleLikedText($event, card.id)">Like Me!</button>
-     -->
-    <p>case admin</p>
-   
-  </div>
-  <div *ngSwitchCaseDefault>
-     <h3>Default</h3>
-  </div>
-</div>
+ 

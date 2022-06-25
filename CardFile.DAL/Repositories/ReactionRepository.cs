@@ -22,18 +22,11 @@ namespace CardFile.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(Reaction entity)
+        public  void Delete(Reaction entity)
         {
-            _context.Reactions.RemoveRange(entity);
-            await _context.SaveChangesAsync();
-          
-        }
-
-        public async  Task DeleteByIdAsync(int id)
-        {
-            var reaction = await _context.Reactions.FindAsync(id);
-            _context.Reactions.Remove(reaction);
-            await _context.SaveChangesAsync();
+            var reaction = _context.Reactions.Find(entity.Id);
+            _context.Reactions.RemoveRange(reaction);
+            _context.SaveChanges();      
         }
 
         public async Task<IEnumerable<Reaction>> GetAllAsync()
@@ -46,10 +39,9 @@ namespace CardFile.DAL.Repositories
             return await _context.Reactions.FindAsync(id);
         }
 
-        public async void Update(Reaction entity)
+        public  void Update(Reaction entity)
         {
-            _context.Reactions.Update(entity);
-            await _context.SaveChangesAsync();
+            _context.Reactions.Update(entity);        
         }
     }
 }

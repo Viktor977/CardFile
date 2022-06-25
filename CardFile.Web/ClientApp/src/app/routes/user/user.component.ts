@@ -9,11 +9,13 @@ import { CardService } from "../../spa/services/card.service";
 })
 export class UserComponent implements OnInit {
   private _cards!: Card[];
-  card!: Card;
+  card: Card;
   @Output()
   onLikePost = new EventEmitter<Card>();
+  selectedcard:Card[];
   @Input()
   cards: Card[];
+ 
   searchtitle = "";
   constructor(private cardService: CardService) {}
 
@@ -24,6 +26,11 @@ export class UserComponent implements OnInit {
       (e: any) => {
         console.log(e);
       };
+  }
+
+  searhWithTitle(title:string){
+
+   return this.cardService.search(title).subscribe((card:Card[])=>{this.selectedcard=card});
   }
   search() {
     if (this.searchtitle && this.searchtitle.length === 0) {

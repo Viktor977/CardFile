@@ -20,10 +20,11 @@ namespace CardFile.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(User entity)
+        public  void Delete(User entity)
         {
-            _context.Users.RemoveRange(entity);
-            await _context.SaveChangesAsync();
+            var user = _context.Users.Find(entity.Id);                    
+                _context.Users.Remove(user);           
+             _context.SaveChanges();
 
         }
 
@@ -44,11 +45,10 @@ namespace CardFile.DAL.Repositories
             return await _context.Users.FindAsync(id);
         }
            
-        public async void Update(User entity)
+        public void Update(User entity)
         {
             _context.Users.Update(entity);      
-            await _context.SaveChangesAsync();
-           
+                 
         }
     }
 }

@@ -1,17 +1,18 @@
 <div>
+  <div class="head">
+    <h3>Search by Title</h3>
+    <h3>User Work</h3>
 
-    <div class="head">
-     <h3>Search by Title</h3>
-     <h3>User Work</h3>
-     <!--
-     <input  type="text" placeholder="input title" [(ngModel)]="searchtitle" >
-     -->
-     <button (click)="search()">Search</button>
-   </div>
-   
-     <app-card *ngFor="let iterCard of cards" [card]="iterCard">
-       <button   (click)="handleLikedText($event,iterCard.id)">Like Me!</button>
-     </app-card>
-   </div>
-   
+    <input type="text" placeholder="input title" [(ngModel)]="searchtitle" />
+
+    <button (click)="searhWithTitle(searchtitle)">Search</button>
+  </div>
+
+ <app-card *ngFor="let iterCard of  selectedcard" [card]="iterCard"> </app-card>
+
  
+</div>
+<!--
+  <button   (click)="handleLikedText($event,iterCard.id)">Like Me!</button>
+
+  -->
