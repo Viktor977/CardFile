@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, EventEmitter, Output } from "@angular/core";
+import { Component, Input, OnInit} from "@angular/core";
+import { Observable } from "rxjs";
 import { Card } from "../../spa/interfaces/card";
 import { CardService } from "../../spa/services/card.service";
 
@@ -8,13 +9,11 @@ import { CardService } from "../../spa/services/card.service";
   styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
-  cards!: Card[];
-  private _cards!: Card[];
-  card!: Card;
-  @Input()
+  
+  cards:Card[];
+  cardlist!:Observable<Card[]>
   searchtitle = "";
-  @Output()
-  onLikePost = new EventEmitter<Card>();
+ 
   constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
@@ -25,15 +24,19 @@ export class HomeComponent implements OnInit {
         console.log(e);
       };
   }
-  search() {
-    if (this.searchtitle && this.searchtitle.length === 0) {
-      this.cards = this._cards;
+  searByTitle(){
+
+    if (this.searchtitle && this.searchtitle.length === 0) {    
       return;
     }
+       this.cardService.search(this.searchtitle).subscribe((card:Card[])=>{
+        this.cardlist=card;
+      }),
+      ((e:any)=>{console.log(e)});
+   
 
-    this._cards = this.cards;
-    this.cards = this.cards.filter((card) =>
-      card.title.startsWith(this.searchtitle)
-    );
+ 
+
   }
+  
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AuthUserService } from "src/app/appservices/authuser.service";
-import { UserApi } from "../user-api";
+import { UserService } from "../../services/user.service"; 
+import { UserApi } from "../../../models/user-api";
 
 @Component({
   selector: "app-sign-in",
@@ -14,7 +14,7 @@ export class SignInComponent implements OnInit {
   formError: string;
   constructor(
     private userApi: UserApi,
-    private userService: AuthUserService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -35,6 +35,8 @@ export class SignInComponent implements OnInit {
             this.formError = error;
           }
         );
+        this.userService.isAuthenticated=true;
+        localStorage.setItem('user',JSON.stringify({"name":signInForm.value.password}));
     }
   }
 

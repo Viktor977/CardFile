@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { SpaModule } from './spa/spa.module';
 import { AuthenticatedComponent } from './routes/authenticated/authenticated.component';
 import { appRouters } from './routes/app-routes';
-import { AuthUserService } from './appservices/authuser.service'; 
+import { UserService } from './spa/services/user.service';
 import { AuthGuard } from './guards/auth.guard';
-import { UserApi } from './spa/users/user-api';
+import { UserApi } from './models/user-api';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
 
@@ -25,8 +25,8 @@ import { RouterModule } from "@angular/router";
     RouterModule.forRoot(appRouters),
   ],
   providers: [
-    AuthUserService,
-    { provide: UserApi, useExisting: AuthUserService },
+    UserService,
+    { provide: UserApi, useExisting: UserService },
     AuthGuard,
   ],
 

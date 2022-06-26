@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { AuthUserService } from 'src/app/appservices/authuser.service';
-import { UserApi } from '../user-api';
+import { UserApi } from '../../../models/user-api';
 
 
 @Component({
@@ -12,34 +11,19 @@ import { UserApi } from '../user-api';
 })
 export class RegistrationComponent implements OnInit {
 
-  submitting = false;
-  formError: string;
-  constructor(
-    private userApi: UserApi,
-    private userService: AuthUserService,
-    private router: Router
-  ) { }
+  registering = false;
+  hasAdded = false;
 
-  onSubmit(signInForm: NgForm): void {
-    if (signInForm.valid) {
-      this.submitting = true;
-      this.formError = null;
-      this.userApi
-        .signIn(signInForm.value.email, signInForm.value.password)
-        .subscribe(
-          (data) => {
-            console.log(data);
-            this.router.navigate(["/sign-in"]);
-          },
-
-          (error) => {
-            this.submitting = false;
-            this.formError = error;
-          }
-        );
-    }
+  constructor(private router: Router, private userApi: UserApi) { }
+  onSubmit(registerForm: NgForm) {
+    this.registering = true;
+    this.userApi.registerUser(registerForm.value).subscribe(() => {
+      setTimeout(() => {this.hasAdded = true; }, 1200);
+      setTimeout(() => {this.router.navigate(['/sign-in']); }, 2000);
+    });
   }
+  
   ngOnInit() {
   }
-
+    
 }

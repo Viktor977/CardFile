@@ -1,5 +1,7 @@
 ﻿using CardFile.BAL.Interfaces;
 using CardFile.BAL.ModelsDto;
+using CardFile.DAL.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -40,6 +42,7 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<TextMaterialDto>> GetById(int id)
         {
             var textMaterial = await _service.GetByIdAsync(id);
@@ -51,6 +54,7 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult>Add([FromBody]TextMaterialDto text)
         {
             if(text is null)
@@ -63,6 +67,7 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public async Task<ActionResult> Delete([FromBody]TextMaterialDto text)
         {
             if(text is null)

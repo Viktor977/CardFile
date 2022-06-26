@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 
 import { SpaConfigService } from "../services/spa-config.service";
-import { UserApi } from "../users/user-api";
+import { UserApi } from "../../models/user-api";
 
 @Component({
   selector: "app-icon-bar",
@@ -15,9 +15,11 @@ export class IconBarComponent implements OnInit {
   ) {}
   showLoader: boolean;
   @Input() showIcons;
+  userInfo: string;
 
   ngOnInit() {
     this.showLoader = false;
+    this.userInfo="User";
   }
   signOut() {
     this.showLoader = true;

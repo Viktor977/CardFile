@@ -1,7 +1,9 @@
-:host{
+.card{
     color: blue;
-    border: 2px solid red;
+    border: 2px solid rgb(73, 71, 107);
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #C5F1F1;
+    border-radius: 5px;
   }

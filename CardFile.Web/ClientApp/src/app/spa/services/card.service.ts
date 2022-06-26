@@ -28,10 +28,9 @@ export class CardService {
   search(searcTitle: string) {
     let filter = new FilterSeacher();
     filter.title = searcTitle;
-    let params = new HttpParams().set("TitleText", filter.title);
-
-    return this.http.get<Card[]>(`${environment.apiUrl}/TextMaterail`, {
-      params: params,
-    });
+    
+      let res= this.http.get<Card[]>(`${environment.apiUrl}/TextMaterail`,filter);
+      console.log(res);
+      return res;
   }
 }

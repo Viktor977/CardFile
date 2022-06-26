@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { CardService } from "../services/card.service";
 import { Card } from "../interfaces/card";
-import { AuthUserService } from "src/app/appservices/authuser.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-card",
@@ -13,7 +13,6 @@ export class CardComponent implements OnInit {
 
   constructor(
     private cardServise: CardService,
-    private authService: AuthUserService
   ) {}
 
   ngOnInit(): void {

@@ -1,14 +1,11 @@
-
-
-
-  <div>
-    
-    <p>{{ card.id }}</p>
-    <h3>{{ card.title }}</h3>
-    <p>{{ card.author }}</p>
-    <p>{{ card.datePublish }}</p>
-    <p>{{ card.article }}</p>
-   <button (click)="handleLikedText($event, card.id)">Like Me!</button>
-   <h4>Role Guest</h4>
-  </div>
+<section *ngIf="card ">
+<div class="card">
  
+  <h3>{{ card.title }}</h3>
+  <p>{{ card.author }}</p>
+  <p>{{ card.datePublish }}</p>
+  <p>{{ card.article }}</p>
+  <button (click)="handleLikedText($event, card.id)">Like Me!</button>
+
+</div>
+</section>

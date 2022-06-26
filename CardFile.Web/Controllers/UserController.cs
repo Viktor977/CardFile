@@ -1,5 +1,6 @@
 ﻿using CardFile.BAL.Interfaces;
 using CardFile.BAL.ModelsDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpGet]
+   
         public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers()
         {
             var users = await _service.GetAllAsync();
@@ -25,6 +27,7 @@ namespace CardFile.Web.Controllers
         }
       
         [HttpGet("{id}")]
+        [Authorize(Roles ="Admin")]
         public async Task<ActionResult<UserDto>> GetById(int id)
         {
             var user = await _service.GetByIdAsync(id);
@@ -32,6 +35,7 @@ namespace CardFile.Web.Controllers
         }
         
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult>Add([FromBody]UserDto user)
         {
             await _service.AddAsync(user);
