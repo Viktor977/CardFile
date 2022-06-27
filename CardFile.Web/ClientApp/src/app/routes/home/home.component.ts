@@ -28,14 +28,7 @@ export class HomeComponent implements OnInit {
 
     if (this.searchtitle && this.searchtitle.length === 0) {    
       return;
-    }
-       this.cardService.search(this.searchtitle).subscribe((card:Card[])=>{
-        this.cardlist=card;
-      }),
-      ((e:any)=>{console.log(e)});
-   
-
- 
+    } 
 
   }
   

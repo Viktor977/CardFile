@@ -21,6 +21,10 @@ export class CardComponent implements OnInit {
 
   handleLikedText(event: Event, id: number) {
     this.card.id = id;
-    this.cardServise.like(this.card.id);
+    this.cardServise.addLike(this.card.id,"").subscribe();
+  }
+  getById(event:Event,id:number){
+    this.card.id=id;
+    this.cardServise.getReactionById(this.card.id);
   }
 }

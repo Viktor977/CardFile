@@ -7,3 +7,7 @@
     background-color: #C5F1F1;
     border-radius: 5px;
   }
+  .card-reaction{
+     display: flex;
+  }
+  

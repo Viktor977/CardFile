@@ -19,7 +19,7 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+      
         public async Task<ActionResult<IEnumerable<ReactionDto>>> GetAll()
         {
             var reactins = await _service.GetAllAsync();
@@ -27,7 +27,7 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
+        
         public async Task<ActionResult>GetById(int id)
         {
             var reaction = await _service.GetByIdAsync(id);
@@ -40,7 +40,7 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        
         public async Task<ActionResult> Add([FromBody] ReactionDto reaction)
         {
             if (reaction.TextId == 0)

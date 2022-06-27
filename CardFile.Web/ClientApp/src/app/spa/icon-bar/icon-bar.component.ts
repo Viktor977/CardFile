@@ -19,7 +19,10 @@ export class IconBarComponent implements OnInit {
 
   ngOnInit() {
     this.showLoader = false;
-    this.userInfo="User";
+    let username=JSON.parse(localStorage.getItem('name')).username;
+    this.userInfo=username;
+    console.log(this.userInfo);
+    
   }
   signOut() {
     this.showLoader = true;

@@ -12,10 +12,10 @@ export class UserComponent implements OnInit {
   card: Card;
   @Output()
   onLikePost = new EventEmitter<Card>();
-  selectedcard:Card[];
+  selectedcard: Card[];
   @Input()
   cards: Card[];
- 
+
   searchtitle = "";
   constructor(private cardService: CardService) {}
 
@@ -28,10 +28,12 @@ export class UserComponent implements OnInit {
       };
   }
 
-  searhWithTitle(title:string){
-
-   return this.cardService.search(title).subscribe((card:Card[])=>{this.selectedcard=card});
+  searhWithTitle(title: string) {
+    this.cardService.search(title).subscribe((cards: Card[]) => {
+      this.selectedcard = cards;
+    });
   }
+
   search() {
     if (this.searchtitle && this.searchtitle.length === 0) {
       this.cards = this._cards;

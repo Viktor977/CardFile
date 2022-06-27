@@ -7,12 +7,7 @@
 
     <button (click)="searhWithTitle(searchtitle)">Search</button>
   </div>
+ <app-card *ngFor="let iterCard of  selectedcard" [card]="iterCard"></app-card>
 
- <app-card *ngFor="let iterCard of  selectedcard" [card]="iterCard"> </app-card>
-
- 
 </div>
-<!--
-  <button   (click)="handleLikedText($event,iterCard.id)">Like Me!</button>
 
-  -->

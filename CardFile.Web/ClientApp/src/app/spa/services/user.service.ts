@@ -33,8 +33,7 @@ export class UserService implements UserApi {
       `${environment.apiUrl}/Authentication`,
       this.user,
       this.httpOptions
-    );
-  localStorage.setItem("carentuser",JSON.stringify(response));
+    );  
     return response;
   }
 

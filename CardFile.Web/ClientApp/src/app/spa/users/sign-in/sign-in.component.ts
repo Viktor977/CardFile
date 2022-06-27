@@ -27,6 +27,13 @@ export class SignInComponent implements OnInit {
         .subscribe(
           (data) => {
             console.log(data);
+            let map=new Map(Object.entries(data));
+           let userName= map.get('firstName');
+         let id=map.get('id');
+           let role=map.get('role')
+          localStorage.setItem('name',JSON.stringify({'username':userName}));
+          localStorage.setItem('role',JSON.stringify({'role':role}));
+          localStorage.setItem('id',JSON.stringify({'id':id}));
             this.router.navigate(["/auth/home"]);
           },
 
@@ -36,7 +43,6 @@ export class SignInComponent implements OnInit {
           }
         );
         this.userService.isAuthenticated=true;
-        localStorage.setItem('user',JSON.stringify({"name":signInForm.value.password}));
     }
   }
 

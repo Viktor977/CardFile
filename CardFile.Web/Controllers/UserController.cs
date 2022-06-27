@@ -18,8 +18,7 @@ namespace CardFile.Web.Controllers
             _service = service;
         }
 
-        [HttpGet]
-   
+        [HttpGet]  
         public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers()
         {
             var users = await _service.GetAllAsync();
