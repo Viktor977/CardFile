@@ -22,8 +22,8 @@ namespace CardFile.Web.Controllers
       
         public async Task<ActionResult<IEnumerable<ReactionDto>>> GetAll()
         {
-            var reactins = await _service.GetAllAsync();
-            return Ok(reactins);
+            var reactions = await _service.GetAllAsync();
+            return Ok(reactions);
         }
 
         [HttpGet("{id}")]

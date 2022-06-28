@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { CardService } from "../services/card.service";
-import { Card } from "../interfaces/card";
-import { Observable } from "rxjs";
+import { Component, OnInit, Input } from '@angular/core';
+import { CardService } from '../services/card.service';
+import { Card } from '../interfaces/card';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-card",
-  templateUrl: "./card.component.html",
-  styleUrls: ["./card.component.css"],
+  selector: 'app-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
   @Input() card: Card;
@@ -15,16 +15,13 @@ export class CardComponent implements OnInit {
     private cardServise: CardService,
   ) {}
 
-  ngOnInit(): void {
-   
-  }
-
+  ngOnInit(): void { }
   handleLikedText(event: Event, id: number) {
     this.card.id = id;
-    this.cardServise.addLike(this.card.id,"").subscribe();
+    this.cardServise.addLike(this.card.id,'').subscribe();
   }
-  getById(event:Event,id:number){
-    this.card.id=id;
+  getById(event: Event, id: number) {
+    this.card.id = id;
     this.cardServise.getReactionById(this.card.id);
   }
 }

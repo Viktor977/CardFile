@@ -13,7 +13,7 @@ export class AppComponent {
     constructor(private spaConfigService: SpaConfigService, private menuService: MenuService) {
         const config: SpaConfig = {
             socialIcons: [
-                { imageFile: "../assets/facebook.png", alt: 'Facebook', url: 'http://facebook.com' },
+                { imageFile: '../assets/facebook.png', alt: 'Facebook', url: 'http://facebook.com' },
                 { imageFile: '../assets/instagram.png', alt: 'Instargram', url: 'http://www.instagram.com' },
                 { imageFile: '../assets/twitter.png', alt: 'Twitter', url: 'http://twitter.com' },
                 { imageFile: '../assets/whatsapp.png', alt: 'WhatsApp', url: 'http://www.whatsapp.com' },

@@ -5,7 +5,7 @@ export const AppMenuItems: Array<MenuItems> = [
     {
         text: 'Home',
         icon: '../assets/home.png',
-        route: '/auth/home',      
+        route: '/home',      
     },
     {
         text: ' Users',

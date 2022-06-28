@@ -1,6 +1,5 @@
 import { Routes } from "@angular/router";
 import { AuthGuard } from "../guards/auth.guard";
-import { GreetingsComponent } from "../spa/greetings/greetings.component";
 import { RegistrationComponent } from "../spa/users/registration/registration.component";
 import { SignInComponent } from "../spa/users/sign-in/sign-in.component";
 import { AdminComponent } from "./admin/admin.component";
@@ -9,18 +8,18 @@ import { HomeComponent } from "./home/home.component";
 import { UserComponent } from "./user/user.component";
 
 export const appRouters: Routes = [
+  {path:'home',component: HomeComponent},
   { path: "sign-in", component: SignInComponent },
   { path: "register", component: RegistrationComponent },
   {
     path: "auth",
-    component: AuthenticatedComponent,
+    component: AuthenticatedComponent, 
     canActivate: [AuthGuard],
     children: [
       {
-        path: "",
+        path: '',
         canActivateChild: [AuthGuard],
-        children: [
-          {path:'home',component:HomeComponent},
+        children: [         
           { path: "user", component: UserComponent },
           { path: "admin", component: AdminComponent},
         ],
@@ -28,5 +27,5 @@ export const appRouters: Routes = [
     ],
   },
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "**", component: GreetingsComponent },
+  { path: "**", component: HomeComponent },
 ];

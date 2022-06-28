@@ -22,8 +22,6 @@ export class RegistrationComponent implements OnInit {
       setTimeout(() => {this.router.navigate(['/sign-in']); }, 2000);
     });
   }
-  
   ngOnInit() {
   }
-    
 }
