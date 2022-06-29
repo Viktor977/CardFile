@@ -2,7 +2,8 @@
 
 <div>
   <h2>List of Users</h2>
-  <table>
+  <h3 *ngIf="!isAdmin">Ooops.....!!! this page is only for admin</h3>
+  <table *ngIf="isAdmin">
     <thead>
       <tr>
         <th>Id</th>

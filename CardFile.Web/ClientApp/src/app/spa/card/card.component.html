@@ -1,8 +1,8 @@
 <section *ngIf="card">
   <div class="card">
     <h3>{{ card.title }}</h3>
-    <p>{{ card.author }}</p>
-    <p>{{ card.datePublish }}</p>
+    <p>author :{{ card.author }}</p>
+    <p>date publication: {{ card.datePublish |  date : 'mediumDate'}}</p>
     <p>{{ card.article }}</p>
     <div class="card-reaction">
       <label for="comment"
