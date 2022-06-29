@@ -47,6 +47,6 @@ export class UserComponent implements OnInit {
   }
   handleLikedText(event: Event, id: number) {
     this.card.id = id;
-    this.cardService.like(this.card.id);
+    this.cardService.addLike(this.card.id,'');
   }
 }

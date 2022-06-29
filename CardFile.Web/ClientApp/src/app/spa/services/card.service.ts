@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
@@ -26,12 +26,6 @@ export class CardService {
       .pipe(map((cards) => cards.slice(0, 10)));
   }
 
-  like(id: number) {
-    this.searchId = id;
-    console.log(this.searchId);
-  }
- 
-
   search(searcTitle: string):Observable<Card[]> {
    this.seacherFilter= new FilterSeacher();
     this.seacherFilter.title = searcTitle;
@@ -54,7 +48,7 @@ export class CardService {
        return res;
   }
   getReactionById(id:number):Observable<Reaction>{
-let res=this.http.get<Reaction>(`${environment.apiUrl}/Reaction ${id}`);
-return res;
+    let res=this.http.get<Reaction>(`${environment.apiUrl}/Reaction ${id}`);
+    return res;
   }
 }

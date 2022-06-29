@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Role } from "src/app/models/role.enum";
 import { MenuItems } from "../interfaces/menuitems";
 
 @Injectable({
@@ -6,6 +7,7 @@ import { MenuItems } from "../interfaces/menuitems";
 })
 export class MenuService {
   constructor() {}
+  role:Role;
   items: Array<MenuItems>;
   isVertical = false;
   showVerticalMenu = false;

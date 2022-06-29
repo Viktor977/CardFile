@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-import { UserService } from "../../services/user.service"; 
+import { UserService } from "../../services/user.service";
 import { UserApi } from "../../../models/user-api";
 
 @Component({
@@ -27,13 +27,16 @@ export class SignInComponent implements OnInit {
         .subscribe(
           (data) => {
             console.log(data);
-            let map=new Map(Object.entries(data));
-           let userName= map.get('firstName');
-         let id=map.get('id');
-           let role=map.get('role')
-          localStorage.setItem('name',JSON.stringify({'username':userName}));
-          localStorage.setItem('role',JSON.stringify({'role':role}));
-          localStorage.setItem('id',JSON.stringify({'id':id}));
+            let map = new Map(Object.entries(data));
+            let userName = map.get("firstName");
+            let id = map.get("id");
+            let role = map.get("role");
+            localStorage.setItem(
+              "name",
+              JSON.stringify({ username: userName })
+            );
+            localStorage.setItem("role", JSON.stringify({ role: role }));
+            localStorage.setItem("id", JSON.stringify({ id: id }));
             this.router.navigate(["/auth/home"]);
           },
 
@@ -42,7 +45,7 @@ export class SignInComponent implements OnInit {
             this.formError = error;
           }
         );
-        this.userService.isAuthenticated=true;
+      this.userService.isAuthenticated = true;
     }
   }
 

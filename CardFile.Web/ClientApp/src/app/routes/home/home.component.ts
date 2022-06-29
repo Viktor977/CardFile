@@ -1,5 +1,4 @@
 import { Component, Input, OnInit} from "@angular/core";
-import { Observable } from "rxjs";
 import { Card } from "../../spa/interfaces/card";
 import { CardService } from "../../spa/services/card.service";
 
@@ -11,8 +10,7 @@ import { CardService } from "../../spa/services/card.service";
 export class HomeComponent implements OnInit {
   
   cards:Card[];
-  cardlist!:Observable<Card[]>
-  searchtitle = "";
+  searchtitle:string;
  
   constructor(private cardService: CardService) {}
 
@@ -24,12 +22,9 @@ export class HomeComponent implements OnInit {
         console.log(e);
       };
   }
-  searByTitle(){
+  searByTitle(title:string){
 
-    if (this.searchtitle && this.searchtitle.length === 0) {    
-      return;
-    } 
-
+   return this.cardService.search(title).subscribe((cards:Card[])=>{this.cards=cards},(e:any)=>{console.log(e)});
   }
   
 }
