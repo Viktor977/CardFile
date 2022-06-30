@@ -18,7 +18,7 @@ namespace CardFile.TESTS.IntegrationTests
             _factory = new CardFileWebApplicationFactory();
             _client = _factory.CreateClient();
         }
-        //------------------
+     
 
 
 

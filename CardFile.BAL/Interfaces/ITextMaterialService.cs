@@ -1,4 +1,5 @@
 ﻿using CardFile.BAL.ModelsDto;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CardFile.BAL.Interfaces

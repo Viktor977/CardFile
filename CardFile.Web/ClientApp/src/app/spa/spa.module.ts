@@ -15,7 +15,6 @@ import { MenuItemComponent } from "../spa/menus/menu-item/menu-item.component";
 import { SpaConfigService } from "./services/spa-config.service";
 import { MenuService } from "./services/menu.service";
 import { ScreenService } from "./services/screen.service";
-import { CardComponent } from "./card/card.component";
 import { CardService } from "./services/card.service";
 import { HomeComponent } from "../routes/home/home.component";
 import { UserComponent } from "../routes/user/user.component";
@@ -38,7 +37,6 @@ import { UserService } from "./services/user.service";
     ScreenSmallDirective,
     SignInComponent,
     RegistrationComponent,
-    CardComponent,
     HomeComponent,
     UserComponent,
     AdminComponent,

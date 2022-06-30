@@ -98,6 +98,13 @@ namespace CardFile.Web
                     pattern: "{controller}/{action=Index}/{id?}");
             });
             app.UseSwagger();
+            app.UseCors(options =>
+            {
+                options.WithOrigins("https://localhost:44356")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+            });
             app.UseSwaggerUI(e =>
             {
                 e.SwaggerEndpoint("/swagger/v1/swagger.json", "CardFile API v1");

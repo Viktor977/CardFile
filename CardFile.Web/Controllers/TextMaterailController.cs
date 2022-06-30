@@ -20,7 +20,16 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TextMaterialDto>>> GetAllTextFile([FromQuery] FilterSearchDto filter)
+        public async Task<ActionResult<IEnumerable<TextMaterialDto>>> Get()
+        {
+            var textMaterialList= await _service.GetAllAsync();
+            return Ok(textMaterialList);
+        }
+
+
+        [HttpGet]
+        [Route("filter")]
+        public async Task<ActionResult<TextMaterialDto>> GetAllTextFile([FromQuery] FilterSearchDto filter)
         {
             if (!string.IsNullOrWhiteSpace(filter.Author))
             {
@@ -35,10 +44,8 @@ namespace CardFile.Web.Controllers
                 return Ok(textFilter);
             }
 
-
-            var text = await _service.GetAllAsync();
-            return Ok(text);
-
+            return BadRequest();
+           
         }
 
         [HttpGet("{id}")]

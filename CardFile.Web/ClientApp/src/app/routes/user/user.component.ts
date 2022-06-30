@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Card } from "../../spa/interfaces/card";
 import { CardService } from "../../spa/services/card.service";
+import { CardModel } from "src/app/models/cardmodel";
 
 @Component({
   selector: "app-user",
@@ -8,43 +9,32 @@ import { CardService } from "../../spa/services/card.service";
   styleUrls: ["./user.component.css"],
 })
 export class UserComponent implements OnInit {
-  private _cards!: Card[];
-  card: Card;
+  
+
   @Output()
   onLikePost = new EventEmitter<Card>();
   selectedcard: Card[];
   @Input()
   cards: Card[];
-
+  @Input()
+  card: Card;
   searchtitle = "";
+  comment:string;
   constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
-    this.cardService.getCards().subscribe((cards: Card[]) => {
-      this.cards = cards;
-    }),
-      (e: any) => {
-        console.log(e);
-      };
+   
   }
 
-  searhWithTitle(title: string) {
-    this.cardService.search(title).subscribe((cards: Card[]) => {
-      this.selectedcard = cards;
-    });
-  }
-
-  search() {
-    if (this.searchtitle && this.searchtitle.length === 0) {
-      this.cards = this._cards;
-      return;
+  searByTitle(){
+    console.log(this.searchtitle);
+     return this.cardService.search(this.searchtitle).subscribe((cards:Card)=>{
+      this.card=cards;
+      console.log(this.card);
+      
+    },(e:any)=>{console.log(e)});
     }
-
-    this._cards = this.cards;
-    this.cards = this.cards.filter((card) =>
-      card.title.startsWith(this.searchtitle)
-    );
-  }
+ 
   handleLikedText(event: Event, id: number) {
     this.card.id = id;
     this.cardService.addLike(this.card.id,'');

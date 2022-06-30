@@ -10,7 +10,7 @@ import { Role } from "src/app/models/role.enum";
 })
 export class AdminComponent implements OnInit {
   users: User[];
-  isAdmin:boolean;
+  isAdmin:boolean = false;
   constructor(private userService: UserService) {
 
   }

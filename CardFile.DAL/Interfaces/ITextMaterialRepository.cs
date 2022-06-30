@@ -1,5 +1,6 @@
 ﻿using CardFile.DAL.Entities;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CardFile.DAL.Interfaces

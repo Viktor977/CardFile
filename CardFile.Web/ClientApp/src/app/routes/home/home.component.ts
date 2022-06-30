@@ -31,9 +31,6 @@ export class HomeComponent implements OnInit {
     this._cardList=this.cards;
     this.cards=this.cards.filter(post=>post.title.startsWith(this.searchtitle));
   }
-  searByTitle(title:string){
   
-   return this.cardService.search(title).subscribe((cards:Card[])=>{this.cards=cards},(e:any)=>{console.log(e)});
-  }
   
 }

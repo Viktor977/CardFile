@@ -27,23 +27,22 @@ namespace CardFile.TESTS.IntegrationTests
             _factory = new CardFileWebApplicationFactory();
             _client = _factory.CreateClient();
         }
-        [TestCase(1)]
-        [TestCase(2)]
-        [TestCase(3)]
-        public async Task TaexMaterialController_GetByIdAsync_ReturnTextMaterialById(int id)
+      
+      
+        public async Task TexMaterialController_GetAllAsync_ReturnTextMaterialAll()
         {
             //arrange
-            var expected = ExpectedMaterialDto.FirstOrDefault(x => x.Id == id);
+            var expected = ExpectedMaterialDto.ToList();
       
             // act
-            var httpResponse = await _client.GetAsync(RequestUri + id);
+            var httpResponse = await _client.GetAsync(RequestUri);
 
             // assert
             httpResponse.EnsureSuccessStatusCode();
             var stringResponse = await httpResponse.Content.ReadAsStringAsync();
-            var actual = JsonConvert.DeserializeObject<TextMaterialDto>(stringResponse);
+            var actual = JsonConvert.DeserializeObject<IEnumerable<TextMaterialDto>>(stringResponse);
 
-            actual.Should().BeEquivalentTo(expected);
+           actual.Should().BeEquivalentTo(expected);
         }
         
          public static readonly List<ReactionDto> GetReactionDtoUserIdOne =
@@ -59,12 +58,12 @@ namespace CardFile.TESTS.IntegrationTests
                 new ReactionDto { Id = 3, Assessment = Assessments.Dislike, UserId = 3, Comment = "?" },
          };
 
-         private static readonly List<TextMaterialDto> ExpectedMaterialDto =
-         new List<TextMaterialDto>()
-         {
-               new TextMaterialDto { Id = 1, Allows = Allows.Allowed, DatePublish = new DateTime(2020, 12, 21), Author = "Doe A." ,Title="Test1",Article="some text1",Reactions=new LinkedList<ReactionDto>(){ } },
-               new TextMaterialDto { Id = 2, Allows = Allows.Accepted, DatePublish = new DateTime(2020, 12, 22), Author = "Doe B." ,Title="Test2",Article="some text2",Reactions=new LinkedList<ReactionDto>(){ }},
-               new TextMaterialDto { Id = 3, Allows = Allows.Rejected, DatePublish = new DateTime(2020, 12, 23), Author = "Doe C.", Title = "Test3", Article ="some text3", Reactions=new LinkedList<ReactionDto>(){ }},
+        private static readonly List<TextMaterialDto> ExpectedMaterialDto =
+        new List<TextMaterialDto>()
+        {
+               new TextMaterialDto { Id = 1, Allows = Allows.Allowed, DatePublish = new DateTime(2020, 12, 21), Author = "Doe A." ,Title="Test1",Article="some text1",Reactions=new List<ReactionDto>(){ } },
+               new TextMaterialDto { Id = 2, Allows = Allows.Accepted, DatePublish = new DateTime(2020, 12, 22), Author = "Doe B." ,Title="Test2",Article="some text2",Reactions=new List<ReactionDto>(){ } },
+               new TextMaterialDto { Id = 3, Allows = Allows.Rejected, DatePublish = new DateTime(2020, 12, 23), Author = "Doe C.", Title = "Test3", Article ="some text3",Reactions=new List<ReactionDto>(){ } },
              
          };
 

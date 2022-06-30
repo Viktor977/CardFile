@@ -11,7 +11,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { UserApi } from './models/user-api';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
-import { CardComponent } from './spa/card/card.component';
+
 
 
 
