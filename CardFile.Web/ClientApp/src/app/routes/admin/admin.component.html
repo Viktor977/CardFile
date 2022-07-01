@@ -1,10 +1,8 @@
-<h2>Users(Admin Works)</h2>
+
 
 <div>
-  <h2>List of Users</h2>
   <h3 *ngIf="!isAdmin">Ooops.....!!! this page is only for admin</h3>
   <div class="admin-block" *ngIf='isAdmin'>
      <button (click)="showUsersList()">Show List of Users</button>
   </div>
-
 </div>

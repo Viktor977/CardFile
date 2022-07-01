@@ -39,8 +39,7 @@ namespace CardFile.Web.Controllers
             return Ok(reaction);
         }
 
-        [HttpPost]
-        
+        [HttpPost]      
         public async Task<ActionResult> Add([FromBody] ReactionDto reaction)
         {
             if (reaction.TextId == 0)

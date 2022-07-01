@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Role } from '../models/role.enum';
 
 
 @Pipe({
@@ -7,12 +8,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class RolePipe implements PipeTransform {
 
-  transform(value:number):string {
+  transform(value:Role):string {
    
-    if(value === 1){
+    if(value === Role.regestered){
       return 'regestered';
     }
-    if(value === 2){
+    if(value === Role.admin){
       return 'admin'
     }
     return 'guest';

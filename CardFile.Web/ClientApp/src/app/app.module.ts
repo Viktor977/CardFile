@@ -11,13 +11,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { UserApi } from './models/user-api';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
-
-
-
+import { UserinfoComponent } from './routes/user/userinfo/userinfo.component';
 
 
 @NgModule({
-  declarations: [AppComponent, AuthenticatedComponent, ],
+  declarations: [AppComponent, AuthenticatedComponent ],
   exports: [],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),

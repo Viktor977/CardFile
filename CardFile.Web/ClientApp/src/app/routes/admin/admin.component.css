@@ -2,3 +2,6 @@ h3{
     color: red;
     font-size: 32px;
 }
+.admin-block button{
+    background-color: rgb(98, 139, 139);
+}

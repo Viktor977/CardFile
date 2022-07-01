@@ -7,6 +7,7 @@ import { UserslistComponent } from "./admin/userslist/userslist.component";
 import { AuthenticatedComponent } from "./authenticated/authenticated.component";
 import { HomeComponent } from "./home/home.component";
 import { UserComponent } from "./user/user.component";
+import { UserinfoComponent } from "./user/userinfo/userinfo.component";
 
 export const appRouters: Routes = [
   {path:'home',component: HomeComponent},
@@ -21,9 +22,10 @@ export const appRouters: Routes = [
         path: '',
         canActivateChild: [AuthGuard],
         children: [         
-          { path: "user", component: UserComponent },
-          { path: "admin", component: AdminComponent},
-          {path:'userslist',component:UserslistComponent}
+          { path: 'user', component: UserComponent },
+          { path: 'admin', component: AdminComponent},
+          {path:'userslist',component:UserslistComponent},
+          {path:'userinfo',component:UserinfoComponent}
         ],
       },
     ],

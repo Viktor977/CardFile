@@ -7,7 +7,6 @@ import { Card } from "../interfaces/card";
 import { FilterSeacher } from "src/app/models/FilterSeacher";
 import { Reaction } from "src/app/models/reaction";
 import { Assessment } from "src/app/models/assessment";
-import { CardModel } from "src/app/models/cardmodel";
 
 @Injectable({
   providedIn: "root",
@@ -35,12 +34,11 @@ export class CardService {
     this.card$= this.http.get<Card>(
       `${environment.apiUrl}/TextMaterail/filter?TitleText=${this.seacherFilter.title}`
     ).pipe();
-    console.log(this.card$);
-
-   
+    console.log(this.card$);  
    return this.card$;
   }
-  addLike(id: number, coment: string) {
+
+  addLikeAndComment(id: number, coment: string) {
     this.reaction = new Reaction();
     this.reaction.id = 0;
     this.reaction.userId = JSON.parse(localStorage.getItem("id")).id;
@@ -51,11 +49,12 @@ export class CardService {
 
     let res = this.http.post(
       `${environment.apiUrl}/Reaction`,
-      this.reaction,
-      this.httpOptions
+      this.reaction
+   
     );
     console.log(res);
     return res;
+    
   }
   getReactionById(id: number): Observable<Reaction> {
     let res = this.http.get<Reaction>(`${environment.apiUrl}/Reaction ${id}`);

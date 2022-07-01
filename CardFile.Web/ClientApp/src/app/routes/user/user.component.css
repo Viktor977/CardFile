@@ -22,6 +22,29 @@
         background-color: #abb1b1;
         border-radius: 5px;
       }
+      .card hr{
+   
+        width: 30%;
+      }
+     
       .card-reaction{
          display: flex;
+      }
+      .head h3{
+        margin-left: 42%;
+      }
+      .update-block{
+        color: blue;
+      }
+      .update-block button{
+        border: 2px solid rgb(156, 108, 108);
+        margin-left: 14%;
+      }
+      .card-comments p{
+        color: blue;
+      } 
+      .card-comments span{
+font-style: italic;
+font-size: 16px;
+color: rgb(26, 255, 0);
       }
