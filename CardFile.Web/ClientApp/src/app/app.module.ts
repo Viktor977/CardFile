@@ -15,8 +15,9 @@ import { RouterModule } from "@angular/router";
 
 
 
+
 @NgModule({
-  declarations: [AppComponent, AuthenticatedComponent],
+  declarations: [AppComponent, AuthenticatedComponent, ],
   exports: [],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),

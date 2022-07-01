@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\models\" />
+    <Folder Include="ClientApp\src\app\pipes\" />
     <Folder Include="ClientApp\src\app\routes\" />
     <Folder Include="ClientApp\src\app\spa\interfaces\" />
     <Folder Include="ClientApp\src\app\spa\users\" />

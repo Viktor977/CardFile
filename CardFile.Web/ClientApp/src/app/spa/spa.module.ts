@@ -23,6 +23,8 @@ import{SignInComponent} from '../spa/users/sign-in/sign-in.component'
 import { RegistrationComponent } from "./users/registration/registration.component";
 import { GreetingsComponent } from './greetings/greetings.component';
 import { UserService } from "./services/user.service";
+import { UserslistComponent } from "../routes/admin/userslist/userslist.component";
+import { RolePipe } from "../pipes/role.pipe";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { UserService } from "./services/user.service";
     HomeComponent,
     UserComponent,
     AdminComponent,
-    GreetingsComponent,  
+    GreetingsComponent, 
+    UserslistComponent,RolePipe,
+  
   ],
   imports: [FormsModule, RouterModule, CommonModule],
   providers: [SpaConfigService, MenuService, ScreenService, CardService,UserService],

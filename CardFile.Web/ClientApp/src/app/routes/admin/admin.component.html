@@ -3,22 +3,8 @@
 <div>
   <h2>List of Users</h2>
   <h3 *ngIf="!isAdmin">Ooops.....!!! this page is only for admin</h3>
-  <table *ngIf="isAdmin">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Role</th>        
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{user.id}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.role}}</td>      
-        <td>{{user.email}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="admin-block" *ngIf='isAdmin'>
+     <button (click)="showUsersList()">Show List of Users</button>
+  </div>
+
 </div>

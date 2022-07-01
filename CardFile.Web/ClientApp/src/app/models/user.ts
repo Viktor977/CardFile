@@ -7,4 +7,5 @@ export class User {
   password: string;
   id: number;
   role: Role;
+  token:string;
 }

@@ -3,6 +3,7 @@ import { AuthGuard } from "../guards/auth.guard";
 import { RegistrationComponent } from "../spa/users/registration/registration.component";
 import { SignInComponent } from "../spa/users/sign-in/sign-in.component";
 import { AdminComponent } from "./admin/admin.component";
+import { UserslistComponent } from "./admin/userslist/userslist.component";
 import { AuthenticatedComponent } from "./authenticated/authenticated.component";
 import { HomeComponent } from "./home/home.component";
 import { UserComponent } from "./user/user.component";
@@ -22,6 +23,7 @@ export const appRouters: Routes = [
         children: [         
           { path: "user", component: UserComponent },
           { path: "admin", component: AdminComponent},
+          {path:'userslist',component:UserslistComponent}
         ],
       },
     ],
