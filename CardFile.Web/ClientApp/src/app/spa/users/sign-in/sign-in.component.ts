@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { UserService } from "../../services/user.service";
 import { UserApi } from "../../../models/user-api";
+import { tokenName } from "@angular/compiler";
 
 @Component({
   selector: "app-sign-in",
@@ -31,12 +32,15 @@ export class SignInComponent implements OnInit {
             let userName = map.get("firstName");
             let id = map.get("id");
             let role = map.get("role");
+            let token=map.get('token');
             localStorage.setItem(
               "name",
               JSON.stringify({ username: userName })
             );
-            localStorage.setItem("role", JSON.stringify({ role: role }));
-            localStorage.setItem("id", JSON.stringify({ id: id }));
+            localStorage.setItem("role", JSON.stringify({ role : role }));
+            localStorage.setItem("id", JSON.stringify({ id : id }));
+            localStorage.setItem('token',JSON.stringify({token : token}));
+           
             this.router.navigate(["/auth/home"]);
           },
 

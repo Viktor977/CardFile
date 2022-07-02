@@ -25,8 +25,7 @@ namespace CardFile.Web.Controllers
             return Ok(users);
         }
       
-        [HttpGet("{id}")]
-        [Authorize(Roles ="Admin")]
+        [HttpGet("{id}")]  
         public async Task<ActionResult<UserDto>> GetById(int id)
         {
             var user = await _service.GetByIdAsync(id);
@@ -34,7 +33,6 @@ namespace CardFile.Web.Controllers
         }
         
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult>Add([FromBody]UserDto user)
         {
             await _service.AddAsync(user);

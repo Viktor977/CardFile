@@ -19,7 +19,6 @@ namespace CardFile.Web.Controllers
         }
 
         [HttpGet]
-      
         public async Task<ActionResult<IEnumerable<ReactionDto>>> GetAll()
         {
             var reactions = await _service.GetAllAsync();
@@ -51,8 +50,7 @@ namespace CardFile.Web.Controllers
             return Ok();
         }
 
-        [HttpPut]
-        [Authorize]
+        [HttpPut]    
         public async Task<ActionResult>Update([FromBody] ReactionDto reaction)
         {
             if (reaction.TextId == 0)
@@ -64,8 +62,7 @@ namespace CardFile.Web.Controllers
             return Ok();
         }
 
-        [HttpDelete]
-        [Authorize]
+        [HttpDelete] 
         public async Task<ActionResult>Delete([FromBody] ReactionDto reaction)
         {
             if(reaction is null)

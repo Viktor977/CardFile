@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/spa/interfaces/user';
+import { UserService } from 'src/app/spa/services/user.service';
 
 @Component({
   selector: 'app-userinfo',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userinfo.component.css']
 })
 export class UserinfoComponent implements OnInit {
-
-  constructor() { }
+ 
+user:User
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
+    let userId=JSON.parse(localStorage.getItem('id')).id;
+    
+    this.userService.getUserById(userId).subscribe((user:User)=>{this.user=user},(error:any)=>{console.log(error)});
   }
 
 }

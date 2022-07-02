@@ -27,7 +27,7 @@ namespace CardFile.Web.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet]    
         [Route("filter")]
         public async Task<ActionResult<TextMaterialDto>> GetAllTextFile([FromQuery] FilterSearchDto filter)
         {
@@ -48,8 +48,7 @@ namespace CardFile.Web.Controllers
            
         }
 
-        [HttpGet("{id}")]
-        [Authorize]
+        [HttpGet("{id}")]      
         public async Task<ActionResult<TextMaterialDto>> GetById(int id)
         {
             var textMaterial = await _service.GetByIdAsync(id);
@@ -61,8 +60,7 @@ namespace CardFile.Web.Controllers
             return Ok(textMaterial);
         }
 
-        [HttpPost]
-        [Authorize]
+        [HttpPost]   
         public async Task<ActionResult>Add([FromBody]TextMaterialDto text)
         {
             if(text is null)
@@ -73,9 +71,20 @@ namespace CardFile.Web.Controllers
             await _service.AddAsync(text);
             return Ok();
         }
+        
+        [HttpPut]
+        public async Task<ActionResult>Update([FromBody] TextMaterialDto text)
+        {
+            if(text is null)
+            {
+                return BadRequest();
+            }
 
-        [HttpDelete]
-        [Authorize]
+            await _service.UpdateAsync(text);
+            return Ok();              
+        }
+
+        [HttpDelete]    
         public async Task<ActionResult> Delete([FromBody]TextMaterialDto text)
         {
             if(text is null)

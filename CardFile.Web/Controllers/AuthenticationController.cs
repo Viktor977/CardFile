@@ -39,7 +39,7 @@ namespace CardFile.Web.Controllers
                 );
 
             var responce = await _service.CheckUser(model.Email, model.Password);
-
+            responce.Password = null;
             responce.Token = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             return Ok(responce);
@@ -52,7 +52,7 @@ namespace CardFile.Web.Controllers
             var user = await _service.CheckUser(model.Email, model.Password);
             if (user != null)
             {
-                return BadRequest();
+                return BadRequest(new {errorText="User is exist" });
             }
             var userNew = new UserDto()
             {

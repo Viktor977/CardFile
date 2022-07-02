@@ -29,7 +29,7 @@ namespace CardFile.Web
             CardFileDIDalConfiguration.ConfigureServices(services);
             CardFileDIBalConfiguration.ConfigureServices(services);
             services.AddAutoMapper(typeof(Startup));
-
+         
             services.AddControllersWithViews();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -90,6 +90,8 @@ namespace CardFile.Web
             }
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -97,7 +99,7 @@ namespace CardFile.Web
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
-            app.UseSwagger();
+           
             app.UseCors(options =>
             {
                 options.WithOrigins("https://localhost:44356")
@@ -105,6 +107,8 @@ namespace CardFile.Web
                 .AllowAnyHeader()
                 .AllowCredentials();
             });
+
+            app.UseSwagger();
             app.UseSwaggerUI(e =>
             {
                 e.SwaggerEndpoint("/swagger/v1/swagger.json", "CardFile API v1");
