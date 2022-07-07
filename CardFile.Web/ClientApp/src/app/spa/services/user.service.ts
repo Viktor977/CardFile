@@ -8,6 +8,7 @@ import {  AuthUser } from "src/app/models/authuser";
 import { environment } from "src/environments/environment";
 import { UserApi } from "src/app/models/user-api";
 import { UserForRegistration } from "src/app/models/userforregistration";
+import { CurrentUser } from "src/app/models/currentuser";
 
 @Injectable({
   providedIn: "root",
@@ -55,5 +56,9 @@ export class UserService implements UserApi {
       this.registretion,
       this.httpOptions
     );
+  }
+  upDate(user:CurrentUser):Observable<any>{
+    console.log(user);
+    return this.http.put(`${environment.apiUrl}/Authentication`,user,this.httpOptions);
   }
 }

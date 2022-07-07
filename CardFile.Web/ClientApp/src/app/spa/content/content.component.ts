@@ -9,6 +9,10 @@ import { ScreenService } from '../services/screen.service';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
-  constructor(private menuService: MenuService, private screenService: ScreenService) {}
+  constructor(
+    private menuService: MenuService, 
+    private screenService: ScreenService
+    ){}
+
   ngOnInit(): void {}
 }

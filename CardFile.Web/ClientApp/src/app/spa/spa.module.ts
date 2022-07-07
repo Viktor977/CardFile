@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { HeaderComponent } from "./header/header.component";
 import { ContentComponent } from "./content/content.component";
@@ -47,7 +47,7 @@ import { UserinfoComponent } from "../routes/user/userinfo/userinfo.component";
     UserslistComponent,RolePipe,ReactionPipe
   
   ],
-  imports: [FormsModule, RouterModule, CommonModule],
+  imports: [FormsModule,ReactiveFormsModule, RouterModule, CommonModule],
   providers: [SpaConfigService, MenuService, ScreenService, CardService,UserService],
   exports: [BodyComponent],
 })

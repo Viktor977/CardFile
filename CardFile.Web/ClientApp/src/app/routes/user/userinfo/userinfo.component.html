@@ -1,4 +1,15 @@
-<p>userinfo works!</p>
-<p>{{user.role | Role}}</p>
-<p>{{user.email}}</p>
-
+<div class="form">
+<button (click)="back()">Back</button>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for=""> First Name</label>
+    <input class="form-control" autocomplete="off" placeholder="{{user.firstName}}" formControlName="firstname">
+    <label for="">Last Name</label>
+    <input class="form-control" autocomplete="off" placeholder="{{user.lastName}}" formControlName="lastname">
+    <label for="">Email</label>
+    <input class="form-control" autocomplete="off" placeholder="{{user.email}}" formControlName='email'>
+    <label for="">Password</label>
+    <input class="form-control" autocomplete="off" placeholder="{{user.password}}" formControlName="password">
+    <label for="">Submitting</label>
+<button>Submit</button>
+</form>
+</div>

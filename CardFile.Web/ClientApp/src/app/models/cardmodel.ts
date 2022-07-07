@@ -1,11 +1,11 @@
 import { Reaction } from "./reaction";
-import { User } from "./user";
+import { CurrentUser } from './currentuser';
 export class CardModel {
   id: number;
   title: string;
   article: string;
   author: string;
   datePublish: string;
-  user: User;
+  user: CurrentUser;
   Reactions: Reaction;
 }

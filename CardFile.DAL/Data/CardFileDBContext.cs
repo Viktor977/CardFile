@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CardFile.DAL.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.EntityFrameworkCore.DbContext" />
     public class CardFileDBContext : DbContext
     {
         public DbSet<User> Users { get; set; }
@@ -19,6 +23,5 @@ namespace CardFile.DAL.Data
             modelBuilder.ApplyConfiguration(new TextMaterialConfiguration());
             modelBuilder.ApplyConfiguration(new ReactionConfiguration());
         }
-    
     }
 }

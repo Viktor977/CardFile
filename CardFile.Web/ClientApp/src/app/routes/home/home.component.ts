@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Card } from "../../spa/interfaces/card";
 import { CardService } from "../../spa/services/card.service";
 
@@ -8,11 +8,10 @@ import { CardService } from "../../spa/services/card.service";
   styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
-  
-  cards:Card[];
-  private _cardList:Card[];
-  searchtitle:string;
- 
+  cards: Card[];
+  private _cardList: Card[];
+  searchtitle: string;
+
   constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
@@ -23,14 +22,14 @@ export class HomeComponent implements OnInit {
         console.log(e);
       };
   }
-  search(){
-    if(this.searchtitle.length === 0){
-      this.cards=this._cardList;
+  search() {
+    if (this.searchtitle.length === 0) {
+      this.cards = this._cardList;
       return;
     }
-    this._cardList=this.cards;
-    this.cards=this.cards.filter(post=>post.title.startsWith(this.searchtitle));
+    this._cardList = this.cards;
+    this.cards = this.cards.filter((post) =>
+      post.title.startsWith(this.searchtitle)
+    );
   }
-  
-  
 }

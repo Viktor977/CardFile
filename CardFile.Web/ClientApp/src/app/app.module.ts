@@ -9,9 +9,9 @@ import { appRouters } from './routes/app-routes';
 import { UserService } from './spa/services/user.service';
 import { AuthGuard } from './guards/auth.guard';
 import { UserApi } from './models/user-api';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
-import { UserinfoComponent } from './routes/user/userinfo/userinfo.component';
+
 
 
 @NgModule({

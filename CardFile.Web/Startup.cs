@@ -29,7 +29,7 @@ namespace CardFile.Web
             CardFileDIDalConfiguration.ConfigureServices(services);
             CardFileDIBalConfiguration.ConfigureServices(services);
             services.AddAutoMapper(typeof(Startup));
-         
+            services.AddCors();
             services.AddControllersWithViews();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -67,6 +67,7 @@ namespace CardFile.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
             services.AddSwaggerGen();
         }
 
