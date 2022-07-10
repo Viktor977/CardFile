@@ -72,6 +72,10 @@ namespace CardFile.Web.Controllers
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UserDto user)
         {
+            if (user.Id == 0)
+            {
+                return BadRequest();
+            }
             await _service.UpdateAsync(user);
             return Ok();
         }

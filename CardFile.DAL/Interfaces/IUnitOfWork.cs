@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CardFile.DAL.Interfaces
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork 
     {
         IUserRepository UserRepositiory { get; }     
         ITextMaterialRepository TextMaterialRepository { get; }

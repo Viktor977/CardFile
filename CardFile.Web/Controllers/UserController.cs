@@ -22,6 +22,7 @@ namespace CardFile.Web.Controllers
         public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers()
         {
             var users = await _service.GetAllAsync();
+            if (users is null) return NotFound();
             return Ok(users);
         }
       
@@ -29,6 +30,7 @@ namespace CardFile.Web.Controllers
         public async Task<ActionResult<UserDto>> GetById(int id)
         {
             var user = await _service.GetByIdAsync(id);
+            if (user is null) return NotFound();
             return Ok(user);
         }
         

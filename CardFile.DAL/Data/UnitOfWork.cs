@@ -55,7 +55,6 @@ namespace CardFile.DAL.Data
                 return _historyRepository;
             }
         }
-
         public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();

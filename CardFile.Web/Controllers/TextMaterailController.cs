@@ -23,6 +23,10 @@ namespace CardFile.Web.Controllers
         public async Task<ActionResult<IEnumerable<TextMaterialDto>>> Get()
         {
             var textMaterialList= await _service.GetAllAsync();
+            if(textMaterialList is null)
+            {
+                return NotFound();
+            }
             return Ok(textMaterialList);
         }
 
@@ -34,17 +38,23 @@ namespace CardFile.Web.Controllers
             if (!string.IsNullOrWhiteSpace(filter.Author))
             {
                 var textFilter = await _service.SearchByFilter(filter);
-                if (textFilter is null) return BadRequest();
+                if (textFilter is null)
+                {
+                    return NotFound();
+                }
                 return Ok(textFilter);
             }
             else if (!string.IsNullOrWhiteSpace(filter.TitleText))
             {
                 var textFilter = await _service.SearchByFilter(filter);
-                if (textFilter is null) return BadRequest();
+                if (textFilter is null)
+                {
+                    return NotFound();
+                }
                 return Ok(textFilter);
             }
 
-            return BadRequest();
+            return NotFound();
            
         }
 

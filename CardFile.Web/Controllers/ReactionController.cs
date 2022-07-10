@@ -22,6 +22,10 @@ namespace CardFile.Web.Controllers
         public async Task<ActionResult<IEnumerable<ReactionDto>>> GetAll()
         {
             var reactions = await _service.GetAllAsync();
+            if(reactions is null)
+            {
+                return NotFound();
+            }
             return Ok(reactions);
         }
 
@@ -32,7 +36,7 @@ namespace CardFile.Web.Controllers
             var reaction = await _service.GetByIdAsync(id);
             if(reaction is null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             return Ok(reaction);
